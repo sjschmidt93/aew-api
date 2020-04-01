@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_055834) do
+ActiveRecord::Schema.define(version: 2020_04_01_155837) do
+
+  create_table "matches", force: :cascade do |t|
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "matches_wrestlers", id: false, force: :cascade do |t|
+    t.integer "wrestler_id", null: false
+    t.integer "match_id", null: false
+    t.index ["match_id", "wrestler_id"], name: "index_matches_wrestlers_on_match_id_and_wrestler_id"
+    t.index ["wrestler_id", "match_id"], name: "index_matches_wrestlers_on_wrestler_id_and_match_id"
+  end
 
   create_table "wrestlers", force: :cascade do |t|
     t.string "name"
