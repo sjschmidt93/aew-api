@@ -34,7 +34,12 @@ ActiveRecord::Schema.define(version: 2020_04_01_224106) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.date "date"
+    t.date "date", null: false
+    t.string "city", null: false
+    t.string "venue", null: false
+    t.string "winner_ids", default: "--- []\n"
+    t.integer "match_type", default: 0
+    t.integer "finish_type", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -47,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_04_01_224106) do
   end
 
   create_table "wrestlers", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
