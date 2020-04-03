@@ -1,9 +1,9 @@
 class Match < ApplicationRecord
   serialize :winner_ids, Array
-  validates :date, :city, :venue, presence: true
 
-  enum match_type: [:singles, :tag]
-  enum finish_type: [:normal, :no_contest, :draw]
-
+  belongs_to :event
   has_and_belongs_to_many :wrestlers
+
+  enum match_type: [:singles, :tag, :six_man_tag, :cage, :battle_royal]
+  enum finish_type: [:normal, :no_contest, :draw]
 end

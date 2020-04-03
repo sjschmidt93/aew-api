@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_224106) do
+ActiveRecord::Schema.define(version: 2020_04_03_151943) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,15 +33,24 @@ ActiveRecord::Schema.define(version: 2020_04_01_224106) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "matches", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
+    t.string "name", null: false
     t.date "date", null: false
     t.string "city", null: false
     t.string "venue", null: false
+    t.integer "event_type", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "event_id"
     t.string "winner_ids", default: "--- []\n"
     t.integer "match_type", default: 0
     t.integer "finish_type", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_matches_on_event_id"
   end
 
   create_table "matches_wrestlers", id: false, force: :cascade do |t|
