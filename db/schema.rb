@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_151943) do
+ActiveRecord::Schema.define(version: 2020_04_06_150511) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 2020_04_03_151943) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "championships", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -60,8 +66,25 @@ ActiveRecord::Schema.define(version: 2020_04_03_151943) do
     t.index ["wrestler_id", "match_id"], name: "index_matches_wrestlers_on_wrestler_id_and_match_id"
   end
 
+  create_table "reigns", force: :cascade do |t|
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.integer "championship_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["championship_id"], name: "index_reigns_on_championship_id"
+  end
+
+  create_table "reigns_wrestlers", id: false, force: :cascade do |t|
+    t.integer "wrestler_id", null: false
+    t.integer "reign_id", null: false
+    t.index ["reign_id", "wrestler_id"], name: "index_reigns_wrestlers_on_reign_id_and_wrestler_id"
+    t.index ["wrestler_id", "reign_id"], name: "index_reigns_wrestlers_on_wrestler_id_and_reign_id"
+  end
+
   create_table "wrestlers", force: :cascade do |t|
     t.string "name", null: false
+    t.string "nickname"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

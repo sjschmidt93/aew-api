@@ -1,6 +1,7 @@
 class Wrestler < ApplicationRecord
   has_and_belongs_to_many :matches
-  has_one_attached :image
+  has_and_belongs_to_many :reigns
+  #has_one_attached :image
   
   def wins
     # TODO: do this in a more SQL-y way?

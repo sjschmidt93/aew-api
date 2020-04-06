@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :matches do
     resources :wrestlers
   end
+
+  resources :championships
 end
