@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_150511) do
+ActiveRecord::Schema.define(version: 2020_04_06_165831) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,13 @@ ActiveRecord::Schema.define(version: 2020_04_06_150511) do
     t.index ["event_id"], name: "index_matches_on_event_id"
   end
 
+  create_table "matches_tag_teams", id: false, force: :cascade do |t|
+    t.integer "match_id", null: false
+    t.integer "tag_team_id", null: false
+    t.index ["match_id", "tag_team_id"], name: "index_matches_tag_teams_on_match_id_and_tag_team_id"
+    t.index ["tag_team_id", "match_id"], name: "index_matches_tag_teams_on_tag_team_id_and_match_id"
+  end
+
   create_table "matches_wrestlers", id: false, force: :cascade do |t|
     t.integer "wrestler_id", null: false
     t.integer "match_id", null: false
@@ -70,16 +77,27 @@ ActiveRecord::Schema.define(version: 2020_04_06_150511) do
     t.date "start_date", null: false
     t.date "end_date"
     t.integer "championship_id"
+    t.integer "wrestler_id"
+    t.integer "tag_team_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["championship_id"], name: "index_reigns_on_championship_id"
+    t.index ["tag_team_id"], name: "index_reigns_on_tag_team_id"
+    t.index ["wrestler_id"], name: "index_reigns_on_wrestler_id"
   end
 
-  create_table "reigns_wrestlers", id: false, force: :cascade do |t|
+  create_table "tag_teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "nickname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tag_teams_wrestlers", id: false, force: :cascade do |t|
     t.integer "wrestler_id", null: false
-    t.integer "reign_id", null: false
-    t.index ["reign_id", "wrestler_id"], name: "index_reigns_wrestlers_on_reign_id_and_wrestler_id"
-    t.index ["wrestler_id", "reign_id"], name: "index_reigns_wrestlers_on_wrestler_id_and_reign_id"
+    t.integer "tag_team_id", null: false
+    t.index ["tag_team_id", "wrestler_id"], name: "index_tag_teams_wrestlers_on_tag_team_id_and_wrestler_id"
+    t.index ["wrestler_id", "tag_team_id"], name: "index_tag_teams_wrestlers_on_wrestler_id_and_tag_team_id"
   end
 
   create_table "wrestlers", force: :cascade do |t|

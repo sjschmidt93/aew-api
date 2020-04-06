@@ -2,5 +2,6 @@ class Reign < ApplicationRecord
   validates :start_date, presence: true
   
   belongs_to :championship
-  has_and_belongs_to_many :wrestlers
+  belongs_to :wrestler, optional: true
+  belongs_to :tag_team, optional: true
 end

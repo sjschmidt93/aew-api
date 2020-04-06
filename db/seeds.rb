@@ -7,23 +7,41 @@ wrestlers = Wrestler.create([{ name: "Jon Moxley" }, { name: "Chris Jericho" }])
 
 Match.create(winner_ids: [1], wrestlers: wrestlers, event: event)
 
-wrestlers = Wrestler.create([
+omega_hangman = Wrestler.create([
   { name: "Kenny Omega" },
-  { name: "Hangman Page" },
+  { name: "Hangman Page" }
+])
+bucks = Wrestler.create([
   { name: "Nick Jackson" },
   { name: "Matt Jackson" }
 ])
+scu = Wrestler.create([
+  { name: "Frankie Kazarian" },
+  { name: "Scorpio Sky" }
+])
 
-Match.create(winner_ids: [3, 4], wrestlers: wrestlers, match_type: :tag, event: event)
+TagTeam.create([
+  { name: "Kenny Omega and Adam Page", wrestlers: omega_hangman },
+  { name: "The Young Bucks", wrestlers: bucks },
+  { name: "SCU", wrestlers: scu }
+])
+
+Match.create(winner_ids: [3, 4], tag_teams: TagTeam.find([1,2]), match_type: :tag, event: event)
 
 championship = Championship.create(name: "AEW World Championship")
 
 reigns = Reign.create([
-  { start_date: "2019-08-31", end_date: "2020-02-20", wrestlers: Wrestler.where(name: 'Chris Jericho') },
-  { start_date: "2020-02-29", wrestlers: Wrestler.where(name: 'Jon Moxley') }
+  { start_date: "2019-08-31", end_date: "2020-02-20", wrestler: Wrestler.find_by(name: "Chris Jericho"), championship: championship },
+  { start_date: "2020-02-29", wrestler: Wrestler.find_by(name: "Jon Moxley"), championship: championship }
 ])
 
 championship.reigns = reigns
 
 championship = Championship.create(name: "World Tag Team Championship")
 
+reigns = Reign.create([
+  { start_date: "2019-10-30", end_date: "2020-01-21", tag_team: TagTeam.find_by(name: "SCU"), championship: championship },
+  { start_date: "2020-01-21", tag_team: TagTeam.find_by(name: "Kenny Omega and Adam Page"), championship: championship }
+])
+
+championship.reigns = reigns
