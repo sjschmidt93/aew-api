@@ -1,3 +1,3 @@
 class WrestlerSerializer < ActiveModel::Serializer
-  attributes :id, :name, :wins, :losses
+  attributes :id, :name, :wins, :losses, :image_url, :nickname
 end

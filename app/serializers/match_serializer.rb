@@ -1,3 +1,4 @@
 class MatchSerializer < ActiveModel::Serializer
-  attributes :id, :wrestlers
+  attributes :id
+  has_many :wrestlers, serializer: WrestlerSerializer
 end

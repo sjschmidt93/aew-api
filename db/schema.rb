@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_165831) do
   create_table "tag_teams", force: :cascade do |t|
     t.string "name", null: false
     t.string "nickname"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_165831) do
   create_table "wrestlers", force: :cascade do |t|
     t.string "name", null: false
     t.string "nickname"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

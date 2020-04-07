@@ -3,7 +3,10 @@
 
 event = Event.create(name: "AEW Revolution", date: "2020-02-28", city: "Chicago, IL", venue: "Wintrust Arena", event_type: :ppv)
 
-wrestlers = Wrestler.create([{ name: "Jon Moxley" }, { name: "Chris Jericho" }])
+wrestlers = Wrestler.create([
+  { name: "Jon Moxley", image_url: 'https://static.wixstatic.com/media/94b54e_7330fb14f4cf4877b9ce60fb0b3a24f2~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/Jon%20Moxley%20Title%20History.webp' },
+  { name: "Chris Jericho", nickname: "Le Champion", image_url: 'https://static.wixstatic.com/media/94b54e_2fd49ec924f140b7ad2ac3f813d69cfd~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/jericho-title-history.webp' }
+])
 
 Match.create(winner_ids: [1], wrestlers: wrestlers, event: event)
 
@@ -45,3 +48,7 @@ reigns = Reign.create([
 ])
 
 championship.reigns = reigns
+
+Wrestler.create([
+  { name: 'Darby Allin' }
+])
