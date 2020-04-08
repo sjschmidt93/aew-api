@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_165831) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "event_id"
-    t.string "winner_ids", default: "--- []\n"
+    t.integer "winner_index"
     t.integer "match_type", default: 0
     t.integer "finish_type", default: 0
     t.datetime "created_at", precision: 6, null: false

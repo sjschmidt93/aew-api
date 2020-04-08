@@ -8,7 +8,7 @@ wrestlers = Wrestler.create([
   { name: "Chris Jericho", nickname: "Le Champion", image_url: 'https://static.wixstatic.com/media/94b54e_2fd49ec924f140b7ad2ac3f813d69cfd~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/jericho-title-history.webp' }
 ])
 
-Match.create(winner_ids: [1], wrestlers: wrestlers, event: event)
+Match.create(winner_index: 0, wrestlers: wrestlers, event: event)
 
 omega_hangman = Wrestler.create([
   { name: "Kenny Omega" },
@@ -29,7 +29,10 @@ TagTeam.create([
   { name: "SCU", wrestlers: scu }
 ])
 
-Match.create(winner_ids: [3, 4], tag_teams: TagTeam.find([1,2]), match_type: :tag, event: event)
+tag_teams = TagTeam.find([1,2])
+wrestlers = Wrestler.where(name: ["Kenny Omega", "Hangman Page", "Nick Jackson", "Matt Jackson"])
+
+Match.create(winner_index: 0, tag_teams: tag_teams, wrestlers: wrestlers, match_type: :tag, event: event)
 
 championship = Championship.create(name: "AEW World Championship")
 

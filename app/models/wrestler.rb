@@ -4,12 +4,21 @@ class Wrestler < ApplicationRecord
   has_many :reigns
   
   def wins
-    # TODO: do this in a more SQL-y way?
-    matches.select{|match| id.in?(match.winner_ids) }.count
+    matches.select do |match|
+      if match.is_tag?
+        match.winning_team.include?(name)
+      end
+      match.winner == name
+    end.count
   end
 
   def losses
-    matches.select{|match| !id.in?(match.winner_ids) }.count
+    matches.select do |match|
+      if match.is_tag?
+        !match.winning_team.include?(name)
+      end
+      match.winner != name
+    end.count
   end
 
   def draws
