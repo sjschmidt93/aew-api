@@ -1,39 +1,93 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-event = Event.create(name: "AEW Revolution", date: "2020-02-28", city: "Chicago, IL", venue: "Wintrust Arena", event_type: :ppv)
-
-wrestlers = Wrestler.create([
-  { name: "Jon Moxley", image_url: 'https://static.wixstatic.com/media/94b54e_7330fb14f4cf4877b9ce60fb0b3a24f2~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/Jon%20Moxley%20Title%20History.webp' },
-  { name: "Chris Jericho", nickname: "Le Champion", image_url: 'https://static.wixstatic.com/media/94b54e_2fd49ec924f140b7ad2ac3f813d69cfd~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/jericho-title-history.webp' }
-])
-
-Match.create(winner_index: 0, wrestlers: wrestlers, event: event)
-
-omega_hangman = Wrestler.create([
-  { name: "Kenny Omega" },
-  { name: "Hangman Page" }
-])
-bucks = Wrestler.create([
-  { name: "Nick Jackson" },
-  { name: "Matt Jackson" }
-])
-scu = Wrestler.create([
+Wrestler.create([
+  { name: "Adam Page", nickname: "Hangman" },
+  { name: "Alex Reynolds" },
+  { name: "Angelico" },
+  { name: "Brodie Lee", nickname: "The Exalted One" },
+  { name: "Brandon Cutler" },
+  { name: "Christopher Daniels" },
+  { name: "Chuck Taylor" },
+  { name: "Cima" },
+  { name: "Cody" },
+  { name: "Colt Cabana" },
+  { name: "Darby Allin" },
+  { name: "Dustin Rhodes", nickname: "The Natural" },
+  { name: "Evil Uno" },
   { name: "Frankie Kazarian" },
-  { name: "Scorpio Sky" }
+  { name: "Isiah Kassidy" },
+  { name: "Jack Evans" },
+  { name: "Jake Hager" },
+  { name: "Jimmy Havoc" },
+  { name: "Joey Janela", nickname: "The Bad Boy" },
+  { name: "John Silver" },
+  { name: "Jon Moxley" },
+  { name: "Jungle Boy" },
+  { name: "Kenny Omega" },
+  { name: "Kip Sabian", nickname: "Superbad" },
+  { name: "Lance Archer" },
+  { name: "Luchasauras" },
+  { name: "Luther" },
+  { name: "Matt Hardy" },
+  { name: "Matt Jackson" },
+  { name: "MJF", nickname: "Maxwell Jacob Friedman" },
+  { name: "Marko Stunt" },
+  { name: "Marq Quen" },
+  { name: "Michael Nakazawa" },
+  { name: "Nick Jackson" },
+  { name: "Orange Cassidy" },
+  { name: "Ortiz" },
+  { name: "Pac", nickname: "The Bastard" },
+  { name: "Pentagon Jr." },
+  { name: "Peter Avalon" },
+  { name: "QT Marshall"},
+  { name: "Rey Fenix" },
+  { name: "Sammy Guevara", nickname: "Spanish God" },
+  { name: "Santana" },
+  { name: "Scorpio Sky" },
+  { name: "Shawn Spears" },
+  { name: "Sonny Kiss" },
+  { name: "Stu Grayson" },
+  { name: "The Butcher" },
+  { name: "The Blade" },
+  { name: "Trent" },
+  { name: "Wardlow" }
 ])
 
 TagTeam.create([
-  { name: "Kenny Omega and Adam Page", wrestlers: omega_hangman },
-  { name: "The Young Bucks", wrestlers: bucks },
-  { name: "SCU", wrestlers: scu }
+  { name: "Private Party", wrestlers: Wrestler.where(name: ["Isiah Kassidy", "Marq Quen"]) },
+  { name: "Jurassic Express", wrestlers: Wrestler.where(name: ["Jungle Boy", "Luchasauras", "Marko Stunt"]) },
+  { name: "Lucha Brothers", wrestlers: Wrestler.where(name: ["Pentagon Jr.", "Rey Fenix"]) },
+  { name: "The Butcher, the Blade, & the Bunny", wrestlers: Wrestler.where(name: ["The Butcher", "The Blade"]) },
+  { name: "Best Friends", wrestlers: Wrestler.where(name: ["Chuck Taylor", "Trent"]) },
+  { name: "Kenny Omega & Adam Page", wrestlers: Wrestler.where(name: ["Kenny Omega", "Adam Page"]) },
+  { name: "The Young Bucks", wrestlers: Wrestler.where(name: ["Nick Jackson", "Matt Jackson"]) },
+  { name: "SCU", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian", "Christopher Daniels"]) },
+  { name: "The Dark Order", wrestlers: Wrestler.where(name: ["Brodie Lee", "John Silver", "Alex Reynolds", "Evil Uno", "Stu Grayson"]) }
 ])
 
-tag_teams = TagTeam.find([1,2])
-wrestlers = Wrestler.where(name: ["Kenny Omega", "Hangman Page", "Nick Jackson", "Matt Jackson"])
+wrestlers = Wrestler.create([
+  { name: "Jon Moxley", image_url: "https://static.wixstatic.com/media/94b54e_7330fb14f4cf4877b9ce60fb0b3a24f2~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/Jon%20Moxley%20Title%20History.webp" },
+  { name: "Chris Jericho", nickname: "Le Champion", image_url: "https://static.wixstatic.com/media/94b54e_2fd49ec924f140b7ad2ac3f813d69cfd~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/jericho-title-history.webp" }
+])
+# wrestlers = Wrestler.where(name: ["Jon Moxley", "Chris Jericho"])
+event = Event.create(name: "AEW Revolution", date: "2020-02-28", city: "Chicago, IL", venue: "Wintrust Arena", event_type: :ppv)
+sides = Side.create([
+  { wrestlers: Wrestler.where(name: "Jon Moxley") },
+  { wrestlers: Wrestler.where(name: "Chris Jericho") }
+])
+Match.create(sides: sides, event: event, winning_side: sides[0])
 
-Match.create(winner_index: 0, tag_teams: tag_teams, wrestlers: wrestlers, match_type: :tag, event: event)
+tag_teams = TagTeam.where(name: ["Kenny Omega & Adam Page", "The Young Bucks"])
+wrestlers = Wrestler.where(name: ["Kenny Omega", "Adam Page", "Nick Jackson", "Matt Jackson"])
+Match.create(tag_teams: tag_teams, wrestlers: wrestlers, match_type: :tag, event: event)
 
+tag_teams = TagTeam.where(name: ["The Dark Order", "SCU"])
+wrestlers = Wrestler.where(name: ["Evil Uno", "Stu Grayson", "Frankie Kazarian", "Scorpio Sky"])
+Match.create(tag_teams: tag_teams, wrestlers: wrestlers, match_type: :tag, event: event)
+
+#####
 championship = Championship.create(name: "AEW World Championship")
 
 reigns = Reign.create([
@@ -51,7 +105,3 @@ reigns = Reign.create([
 ])
 
 championship.reigns = reigns
-
-Wrestler.create([
-  { name: 'Darby Allin' }
-])

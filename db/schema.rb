@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_165831) do
+ActiveRecord::Schema.define(version: 2020_04_09_203239) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -51,12 +51,13 @@ ActiveRecord::Schema.define(version: 2020_04_06_165831) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "event_id"
-    t.integer "winner_index"
+    t.integer "winning_side_id"
     t.integer "match_type", default: 0
     t.integer "finish_type", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_matches_on_event_id"
+    t.index ["winning_side_id"], name: "index_matches_on_winning_side_id"
   end
 
   create_table "matches_tag_teams", id: false, force: :cascade do |t|
@@ -86,12 +87,27 @@ ActiveRecord::Schema.define(version: 2020_04_06_165831) do
     t.index ["wrestler_id"], name: "index_reigns_on_wrestler_id"
   end
 
+  create_table "sides", force: :cascade do |t|
+    t.integer "match_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["match_id"], name: "index_sides_on_match_id"
+  end
+
+  create_table "sides_wrestlers", id: false, force: :cascade do |t|
+    t.integer "wrestler_id", null: false
+    t.integer "side_id", null: false
+    t.index ["side_id", "wrestler_id"], name: "index_sides_wrestlers_on_side_id_and_wrestler_id"
+    t.index ["wrestler_id", "side_id"], name: "index_sides_wrestlers_on_wrestler_id_and_side_id"
+  end
+
   create_table "tag_teams", force: :cascade do |t|
     t.string "name", null: false
     t.string "nickname"
     t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tag_teams_on_name", unique: true
   end
 
   create_table "tag_teams_wrestlers", id: false, force: :cascade do |t|
@@ -105,9 +121,12 @@ ActiveRecord::Schema.define(version: 2020_04_06_165831) do
     t.string "name", null: false
     t.string "nickname"
     t.string "image_url"
+    t.integer "divison", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_wrestlers_on_name", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "matches", "sides", column: "winning_side_id"
 end
