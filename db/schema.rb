@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_203239) do
+ActiveRecord::Schema.define(version: 2020_04_09_214135) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -89,9 +89,19 @@ ActiveRecord::Schema.define(version: 2020_04_09_203239) do
 
   create_table "sides", force: :cascade do |t|
     t.integer "match_id"
+    t.string "competitor_type"
+    t.integer "competitor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["competitor_type", "competitor_id"], name: "index_sides_on_competitor_type_and_competitor_id"
     t.index ["match_id"], name: "index_sides_on_match_id"
+  end
+
+  create_table "sides_tag_teams", id: false, force: :cascade do |t|
+    t.integer "tag_team_id", null: false
+    t.integer "side_id", null: false
+    t.index ["side_id", "tag_team_id"], name: "index_sides_tag_teams_on_side_id_and_tag_team_id"
+    t.index ["tag_team_id", "side_id"], name: "index_sides_tag_teams_on_tag_team_id_and_side_id"
   end
 
   create_table "sides_wrestlers", id: false, force: :cascade do |t|

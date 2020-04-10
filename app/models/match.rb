@@ -1,9 +1,13 @@
 class Match < ApplicationRecord
   belongs_to :event
   has_many :sides
-  has_many :wrestlers, through: :sides
-  #has_many :managers, through: :sides, foreign_key: "manager_id"
+  has_many :wrestlers, through: :sides, source: :competitor, source_type: 'Wrestler'
+  has_many :tag_teams, through: :sides, source: :competitor, source_type: 'TagTeam'
   has_one :winning_side, :class_name => "Side"
+
+  def all_wrestlers
+    wrestlers.concat(tag_teams.map(&:wrestlers))
+  end
 
   def winners
     winning_side.wrestlers

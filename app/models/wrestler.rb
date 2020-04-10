@@ -1,11 +1,9 @@
 class Wrestler < ApplicationRecord
   validates :name, uniqueness: true
   
-  # has_and_belongs_to_many :matches, through: :sides
   has_and_belongs_to_many :tag_teams
-  #has_many_matches, through: :tag_teams
   has_many :reigns
-  has_and_belongs_to_many :sides
+  has_many :sides, as: :competitor
   has_many :matches, through: :sides
 
   enum division: [:mens, :womens]
