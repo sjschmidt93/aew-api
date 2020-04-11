@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_200030) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_championships_on_name", unique: true
   end
 
   create_table "events", force: :cascade do |t|
@@ -64,13 +65,12 @@ ActiveRecord::Schema.define(version: 2020_04_09_200030) do
     t.date "start_date", null: false
     t.date "end_date"
     t.integer "championship_id"
-    t.integer "wrestler_id"
-    t.integer "tag_team_id"
+    t.string "competitor_type"
+    t.integer "competitor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["championship_id"], name: "index_reigns_on_championship_id"
-    t.index ["tag_team_id"], name: "index_reigns_on_tag_team_id"
-    t.index ["wrestler_id"], name: "index_reigns_on_wrestler_id"
+    t.index ["competitor_type", "competitor_id"], name: "index_reigns_on_competitor_type_and_competitor_id"
   end
 
   create_table "sides", force: :cascade do |t|

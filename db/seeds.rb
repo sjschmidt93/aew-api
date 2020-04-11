@@ -91,6 +91,7 @@ sides = Side.create([
   { competitor: Wrestler.find_by(name: "Chris Jericho") }
 ])
 Match.create(sides: sides, event: event, winning_side: sides[1])
+
 # tag_teams = TagTeam.where(name: ["Kenny Omega & Adam Page", "The Young Bucks"])
 # wrestlers = Wrestler.where(name: ["Kenny Omega", "Adam Page", "Nick Jackson", "Matt Jackson"])
 # Match.create(tag_teams: tag_teams, wrestlers: wrestlers, match_type: :tag, event: event)
@@ -99,21 +100,17 @@ Match.create(sides: sides, event: event, winning_side: sides[1])
 # wrestlers = Wrestler.where(name: ["Evil Uno", "Stu Grayson", "Frankie Kazarian", "Scorpio Sky"])
 # Match.create(tag_teams: tag_teams, wrestlers: wrestlers, match_type: :tag, event: event)
 
-# #####
-# championship = Championship.create(name: "AEW World Championship")
+#####
+championship = Championship.create(name: "AEW World Championship")
 
-# reigns = Reign.create([
-#   { start_date: "2019-08-31", end_date: "2020-02-20", wrestler: Wrestler.find_by(name: "Chris Jericho"), championship: championship },
-#   { start_date: "2020-02-29", wrestler: Wrestler.find_by(name: "Jon Moxley"), championship: championship }
-# ])
+reigns = Reign.create([
+  { start_date: "2019-08-31", end_date: "2020-02-20", competitor: Wrestler.find_by(name: "Chris Jericho"), championship: championship },
+  { start_date: "2020-02-29", competitor: Wrestler.find_by(name: "Jon Moxley"), championship: championship }
+])
 
-# championship.reigns = reigns
+championship = Championship.create(name: "World Tag Team Championship")
 
-# championship = Championship.create(name: "World Tag Team Championship")
-
-# reigns = Reign.create([
-#   { start_date: "2019-10-30", end_date: "2020-01-21", tag_team: TagTeam.find_by(name: "SCU"), championship: championship },
-#   { start_date: "2020-01-21", tag_team: TagTeam.find_by(name: "Kenny Omega and Adam Page"), championship: championship }
-# ])
-
-# championship.reigns = reigns
+reigns = Reign.create([
+  { start_date: "2019-10-30", end_date: "2020-01-21", competitor: TagTeam.find_by(name: "SCU"), championship: championship },
+  { start_date: "2020-01-21", competitor: TagTeam.find_by(name: "Kenny Omega & Adam Page"), championship: championship }
+])

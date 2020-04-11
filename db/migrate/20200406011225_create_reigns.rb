@@ -4,8 +4,7 @@ class CreateReigns < ActiveRecord::Migration[6.0]
       t.date :start_date, null: false
       t.date :end_date
       t.belongs_to :championship
-      t.belongs_to :wrestler
-      t.belongs_to :tag_team
+      t.belongs_to :competitor, polymorphic: true
       t.timestamps
     end
   end
