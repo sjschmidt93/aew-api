@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   end
 
   resources :championships
+
+  resources :tag_teams
 end

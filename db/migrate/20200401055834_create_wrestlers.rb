@@ -4,7 +4,7 @@ class CreateWrestlers < ActiveRecord::Migration[6.0]
       t.string :name, null: false, index: { unique: true }
       t.string :nickname
       t.string :image_url
-      t.integer :divison, default: 0
+      t.integer :division, default: 0
       t.timestamps
     end
   end

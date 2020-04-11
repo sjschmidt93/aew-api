@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_132758) do
     t.string "name", null: false
     t.string "nickname"
     t.string "image_url"
-    t.integer "divison", default: 0
+    t.integer "division", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_wrestlers_on_name", unique: true

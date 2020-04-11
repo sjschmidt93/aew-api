@@ -2,10 +2,12 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 Wrestler.create([
+  { name: "Jon Moxley", image_url: "https://static.wixstatic.com/media/94b54e_7330fb14f4cf4877b9ce60fb0b3a24f2~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/Jon%20Moxley%20Title%20History.webp" },
+  { name: "Chris Jericho", nickname: "Le Champion", image_url: "https://static.wixstatic.com/media/94b54e_2fd49ec924f140b7ad2ac3f813d69cfd~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/jericho-title-history.webp" },
   { name: "Adam Page", nickname: "Hangman" },
   { name: "Alex Reynolds" },
   { name: "Angelico" },
-  { name: "Brodie Lee", nickname: "The Exalted One" },
+  { name: "Brodie Lee", nickname: "The Exalted One", image_url: "https://static.wixstatic.com/media/94b54e_c2e36f3b4df94800b68f9a2d3aedb01d~mv2.jpg/v1/fill/w_320,h_478,fp_0.50_0.50,q_90/94b54e_c2e36f3b4df94800b68f9a2d3aedb01d~mv2.webp" },
   { name: "Brandon Cutler" },
   { name: "Christopher Daniels" },
   { name: "Chuck Taylor" },
@@ -52,9 +54,28 @@ Wrestler.create([
   { name: "The Butcher" },
   { name: "The Blade" },
   { name: "Trent" },
-  { name: "Wardlow" },
-  { name: "Jon Moxley", image_url: "https://static.wixstatic.com/media/94b54e_7330fb14f4cf4877b9ce60fb0b3a24f2~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/Jon%20Moxley%20Title%20History.webp" },
-  { name: "Chris Jericho", nickname: "Le Champion", image_url: "https://static.wixstatic.com/media/94b54e_2fd49ec924f140b7ad2ac3f813d69cfd~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/jericho-title-history.webp" }
+  { name: "Wardlow" }
+])
+
+Wrestler.create([
+  { name: "Allie", division: :womens, nickname: "The Bunny" },
+  { name: "Anna Jay", division: :womens},
+  { name: "Awesome Kong", division: :womens},
+  { name: "Bea Priestley", division: :womens, image_url: 'https://static.wixstatic.com/media/94b54e_7763a8f70531426da08fd7fe118682af~mv2.jpg/v1/fill/w_320,h_478,fp_0.50_0.50,q_90/94b54e_7763a8f70531426da08fd7fe118682af~mv2.webp'},
+  { name: "Big Swole", division: :womens},
+  { name: "Brandi Rhodes", division: :womens},
+  { name: "Britt Baker", division: :womens},
+  { name: "Emi Sakura", division: :womens},
+  { name: "Hikaru Shida", division: :womens},
+  { name: "Kris Statlander", division: :womens},
+  { name: "Leva Bates", division: :womens},
+  { name: "Mel", division: :womens},
+  { name: "Nyla Rose", division: :womens},
+  { name: "Penelope Ford", division: :womens},
+  { name: "Riho", division: :womens},
+  { name: "Sadie Gibbs", division: :womens},
+  { name: "Shanna", division: :womens},
+  { name: "Yuka Sakazaki", division: :womens},
 ])
 
 stables = Stable.create([
@@ -68,7 +89,7 @@ TagTeam.create([
   { name: "Lucha Brothers", wrestlers: Wrestler.where(name: ["Pentagon Jr.", "Rey Fenix"]) },
   { name: "The Butcher & the Blade", wrestlers: Wrestler.where(name: ["The Butcher", "The Blade"]) },
   { name: "Best Friends", wrestlers: Wrestler.where(name: ["Chuck Taylor", "Trent"]) },
-  { name: "Kenny Omega & Adam Page", wrestlers: Wrestler.where(name: ["Kenny Omega", "Adam Page"]), stable: stables[1] },
+  { name: "Kenny Omega & Adam Page", wrestlers: Wrestler.where(name: ["Kenny Omega", "Adam Page"]), stable: stables[1], image_url: 'https://static.wixstatic.com/media/94b54e_3880eeb83a3147c19c1ca6c62c292a85~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/kenny-and-hangman.webp' },
   { name: "The Young Bucks", wrestlers: Wrestler.where(name: ["Nick Jackson", "Matt Jackson"]), stable: stables[1] },
   { name: "Santana & Ortiz", wrestlers: Wrestler.where(name: ["Santana", "Ortiz"]), stable: stables[0] }
   #{ name: "SCU", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian", "Christopher Daniels"]) },

@@ -1,11 +1,6 @@
 class WrestlersController < ApplicationController
   def index
-    if params[:match_id].present?
-      @wrestlers = Match.find(params[:match_id]).wrestlers
-    else
-      @wrestlers = Wrestler.all
-    end
-    
+    @wrestlers = Wrestler.all
     render json: @wrestlers
   end
 
