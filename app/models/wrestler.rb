@@ -7,15 +7,20 @@ class Wrestler < ApplicationRecord
   has_many :matches, through: :sides
 
   enum division: [:mens, :womens]
+
+  def all_matches
+    matches + tag_team_matches
+  end
+
+  def tag_team_matches
+    tag_teams.map(&:matches).flatten(1)
+  end
   
   def wins
-    matches.select do |match|
-      if match.is_tag?
-        match.winning_team.include?(name)
-      else
-        match.winner == name
-      end
-    end.count
+  end
+
+  def singles_wins
+    matches.select { |match| match.winning_side.competitor_id == id }
   end
 
   def losses

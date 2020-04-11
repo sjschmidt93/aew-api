@@ -6,15 +6,19 @@ class Match < ApplicationRecord
   has_one :winning_side, :class_name => "Side"
 
   def all_wrestlers
-    wrestlers.concat(tag_teams.map(&:wrestlers))
+    wrestlers + tag_teams.map(&:wrestlers).flatten(1)
   end
 
-  def winners
-    winning_side.wrestlers
+  def is_singles?
+    tag_teams.count == 0
+  end
+
+  def is_tag?
+    wrestlers.count == 0
   end
 
   def is_handicap?
-    sides.any? { |side| side.wrestlers.count != sides[0].wrestlers.count }
+    wrestlers.count > 0 && tag_teams.count > 0
   end
   
   enum match_type: [:singles, :tag, :cage, :battle_royal]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_214135) do
+ActiveRecord::Schema.define(version: 2020_04_09_200030) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,20 +60,6 @@ ActiveRecord::Schema.define(version: 2020_04_09_214135) do
     t.index ["winning_side_id"], name: "index_matches_on_winning_side_id"
   end
 
-  create_table "matches_tag_teams", id: false, force: :cascade do |t|
-    t.integer "match_id", null: false
-    t.integer "tag_team_id", null: false
-    t.index ["match_id", "tag_team_id"], name: "index_matches_tag_teams_on_match_id_and_tag_team_id"
-    t.index ["tag_team_id", "match_id"], name: "index_matches_tag_teams_on_tag_team_id_and_match_id"
-  end
-
-  create_table "matches_wrestlers", id: false, force: :cascade do |t|
-    t.integer "wrestler_id", null: false
-    t.integer "match_id", null: false
-    t.index ["match_id", "wrestler_id"], name: "index_matches_wrestlers_on_match_id_and_wrestler_id"
-    t.index ["wrestler_id", "match_id"], name: "index_matches_wrestlers_on_wrestler_id_and_match_id"
-  end
-
   create_table "reigns", force: :cascade do |t|
     t.date "start_date", null: false
     t.date "end_date"
@@ -95,20 +81,6 @@ ActiveRecord::Schema.define(version: 2020_04_09_214135) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["competitor_type", "competitor_id"], name: "index_sides_on_competitor_type_and_competitor_id"
     t.index ["match_id"], name: "index_sides_on_match_id"
-  end
-
-  create_table "sides_tag_teams", id: false, force: :cascade do |t|
-    t.integer "tag_team_id", null: false
-    t.integer "side_id", null: false
-    t.index ["side_id", "tag_team_id"], name: "index_sides_tag_teams_on_side_id_and_tag_team_id"
-    t.index ["tag_team_id", "side_id"], name: "index_sides_tag_teams_on_tag_team_id_and_side_id"
-  end
-
-  create_table "sides_wrestlers", id: false, force: :cascade do |t|
-    t.integer "wrestler_id", null: false
-    t.integer "side_id", null: false
-    t.index ["side_id", "wrestler_id"], name: "index_sides_wrestlers_on_side_id_and_wrestler_id"
-    t.index ["wrestler_id", "side_id"], name: "index_sides_wrestlers_on_wrestler_id_and_side_id"
   end
 
   create_table "tag_teams", force: :cascade do |t|
