@@ -52,45 +52,58 @@ Wrestler.create([
   { name: "The Butcher" },
   { name: "The Blade" },
   { name: "Trent" },
-  { name: "Wardlow" }
-])
-
-TagTeam.create([
-  { name: "Private Party", wrestlers: Wrestler.where(name: ["Isiah Kassidy", "Marq Quen"]) },
-  { name: "Jurassic Express", wrestlers: Wrestler.where(name: ["Jungle Boy", "Luchasauras", "Marko Stunt"]) },
-  { name: "Lucha Brothers", wrestlers: Wrestler.where(name: ["Pentagon Jr.", "Rey Fenix"]) },
-  { name: "The Butcher, the Blade, & the Bunny", wrestlers: Wrestler.where(name: ["The Butcher", "The Blade"]) },
-  { name: "Best Friends", wrestlers: Wrestler.where(name: ["Chuck Taylor", "Trent"]) },
-  { name: "Kenny Omega & Adam Page", wrestlers: Wrestler.where(name: ["Kenny Omega", "Adam Page"]) },
-  { name: "The Young Bucks", wrestlers: Wrestler.where(name: ["Nick Jackson", "Matt Jackson"]) },
-  { name: "SCU", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian", "Christopher Daniels"]) },
-  { name: "The Dark Order", wrestlers: Wrestler.where(name: ["Brodie Lee", "John Silver", "Alex Reynolds", "Evil Uno", "Stu Grayson"]) }
-])
-
-Wrestler.create([
+  { name: "Wardlow" },
   { name: "Jon Moxley", image_url: "https://static.wixstatic.com/media/94b54e_7330fb14f4cf4877b9ce60fb0b3a24f2~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/Jon%20Moxley%20Title%20History.webp" },
   { name: "Chris Jericho", nickname: "Le Champion", image_url: "https://static.wixstatic.com/media/94b54e_2fd49ec924f140b7ad2ac3f813d69cfd~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/jericho-title-history.webp" }
 ])
 
-event = Event.create(name: "AEW Revolution", date: "2020-02-28", city: "Chicago, IL", venue: "Wintrust Arena", event_type: :ppv)
+stables = Stable.create([
+  { name: "The Inner Circle", wrestlers: Wrestler.where(name: ["Sammy Guevara", "Chris Jericho", "Jake Hager", "Santana", "Ortiz"]) },
+  { name: "The Elite", wrestlers: Wrestler.where(name: ["Cody", "Adam Page", "Kenny Omega", "Matt Jackson", "Nick Jackson"]) }
+])
+
+TagTeam.create([
+  { name: "Private Party", wrestlers: Wrestler.where(name: ["Isiah Kassidy", "Marq Quen"]) },
+  #{ name: "Jurassic Express", wrestlers: Wrestler.where(name: ["Jungle Boy", "Luchasauras", "Marko Stunt"]) },
+  { name: "Lucha Brothers", wrestlers: Wrestler.where(name: ["Pentagon Jr.", "Rey Fenix"]) },
+  { name: "The Butcher & the Blade", wrestlers: Wrestler.where(name: ["The Butcher", "The Blade"]) },
+  { name: "Best Friends", wrestlers: Wrestler.where(name: ["Chuck Taylor", "Trent"]) },
+  { name: "Kenny Omega & Adam Page", wrestlers: Wrestler.where(name: ["Kenny Omega", "Adam Page"]), stable: stables[1] },
+  { name: "The Young Bucks", wrestlers: Wrestler.where(name: ["Nick Jackson", "Matt Jackson"]), stable: stables[1] },
+  { name: "Santana & Ortiz", wrestlers: Wrestler.where(name: ["Santana", "Ortiz"]), stable: stables[0] }
+  #{ name: "SCU", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian", "Christopher Daniels"]) },
+  #{ name: "The Dark Order", wrestlers: Wrestler.where(name: ["Brodie Lee", "John Silver", "Alex Reynolds", "Evil Uno", "Stu Grayson"]) }
+])
+
+events = Event.create([
+  { name: "AEW Revolution", date: "2020-02-28", city: "Chicago, IL", venue: "Wintrust Arena", event_type: :ppv },
+  { name: "AEW Double or Nothing", date: "2019-05-25", city: "Las Vegas, NV", venue: "MGM Grand Garden Arena", event_type: :ppv },
+  { name: "AEW Full Gear", date: "2019-11-09", city: "Baltimore, MD", venue: "Royal Farms Arena", event_type: :ppv }
+])
+
 sides = Side.create([
   { competitor: Wrestler.find_by(name: "Jon Moxley") },
   { competitor: Wrestler.find_by(name: "Chris Jericho") }
 ])
-Match.create(sides: sides, event: event, winning_side: sides[0])
+Match.create(sides: sides, event: events[0], winning_side: sides[0])
 
 sides = Side.create([
   { competitor: TagTeam.find_by(name: "Kenny Omega & Adam Page") },
   { competitor: TagTeam.find_by(name: "The Young Bucks") }
 ])
-Match.create(sides: sides, event: event, winning_side: sides[0])
+Match.create(sides: sides, event: events[0], winning_side: sides[0])
 
-event = Event.create(name: "AEW Double or Nothing", date: "2019-05-25", city: "Las Vegas, NV", venue: "MGM Grand Garden Arena", event_type: :ppv)
 sides = Side.create([
   { competitor: Wrestler.find_by(name: "Kenny Omega") },
   { competitor: Wrestler.find_by(name: "Chris Jericho") }
 ])
-Match.create(sides: sides, event: event, winning_side: sides[1])
+Match.create(sides: sides, event: events[1], winning_side: sides[1])
+
+sides = Side.create([
+  { competitor: TagTeam.find_by(name: "Santana & Ortiz") },
+  { competitor: TagTeam.find_by(name: "The Young Bucks") }
+])
+Match.create(sides: sides, event: events[2], winning_side: sides[0])
 
 # tag_teams = TagTeam.where(name: ["Kenny Omega & Adam Page", "The Young Bucks"])
 # wrestlers = Wrestler.where(name: ["Kenny Omega", "Adam Page", "Nick Jackson", "Matt Jackson"])

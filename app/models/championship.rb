@@ -1,5 +1,5 @@
 class Championship < ApplicationRecord
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 
   has_many :reigns
 end

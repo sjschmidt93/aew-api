@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_200030) do
+ActiveRecord::Schema.define(version: 2020_04_11_132758) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_200030) do
     t.integer "event_type", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_events_on_name", unique: true
   end
 
   create_table "matches", force: :cascade do |t|
@@ -83,13 +84,29 @@ ActiveRecord::Schema.define(version: 2020_04_09_200030) do
     t.index ["match_id"], name: "index_sides_on_match_id"
   end
 
+  create_table "stables", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_stables_on_name", unique: true
+  end
+
+  create_table "stables_wrestlers", id: false, force: :cascade do |t|
+    t.integer "wrestler_id", null: false
+    t.integer "stable_id", null: false
+    t.index ["stable_id", "wrestler_id"], name: "index_stables_wrestlers_on_stable_id_and_wrestler_id"
+    t.index ["wrestler_id", "stable_id"], name: "index_stables_wrestlers_on_wrestler_id_and_stable_id"
+  end
+
   create_table "tag_teams", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "stable_id"
     t.string "nickname"
     t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_tag_teams_on_name", unique: true
+    t.index ["stable_id"], name: "index_tag_teams_on_stable_id"
   end
 
   create_table "tag_teams_wrestlers", id: false, force: :cascade do |t|
