@@ -9,6 +9,10 @@ class Wrestler < ApplicationRecord
 
   enum division: [:mens, :womens]
 
+  def current_championships
+    reigns.active.map(&:championship)
+  end
+
   def all_matches
     matches + tag_team_matches
   end

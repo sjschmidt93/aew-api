@@ -80,7 +80,8 @@ Wrestler.create([
 
 stables = Stable.create([
   { name: "The Inner Circle", wrestlers: Wrestler.where(name: ["Sammy Guevara", "Chris Jericho", "Jake Hager", "Santana", "Ortiz"]) },
-  { name: "The Elite", wrestlers: Wrestler.where(name: ["Cody", "Adam Page", "Kenny Omega", "Matt Jackson", "Nick Jackson"]) }
+  { name: "The Elite", wrestlers: Wrestler.where(name: ["Cody", "Adam Page", "Kenny Omega", "Matt Jackson", "Nick Jackson"]) },
+  { name: "SCU", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian", "Christopher Daniels"]) }
 ])
 
 TagTeam.create([
@@ -91,8 +92,8 @@ TagTeam.create([
   { name: "Best Friends", wrestlers: Wrestler.where(name: ["Chuck Taylor", "Trent"]) },
   { name: "Kenny Omega & Adam Page", wrestlers: Wrestler.where(name: ["Kenny Omega", "Adam Page"]), stable: stables[1], image_url: 'https://static.wixstatic.com/media/94b54e_3880eeb83a3147c19c1ca6c62c292a85~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/kenny-and-hangman.webp' },
   { name: "The Young Bucks", wrestlers: Wrestler.where(name: ["Nick Jackson", "Matt Jackson"]), stable: stables[1] },
-  { name: "Santana & Ortiz", wrestlers: Wrestler.where(name: ["Santana", "Ortiz"]), stable: stables[0] }
-  #{ name: "SCU", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian", "Christopher Daniels"]) },
+  { name: "Santana & Ortiz", wrestlers: Wrestler.where(name: ["Santana", "Ortiz"]), stable: stables[0] },
+  { name: "Frankie Kazarian & Scorpio Sky", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian"]), stable: stables[2] }
   #{ name: "The Dark Order", wrestlers: Wrestler.where(name: ["Brodie Lee", "John Silver", "Alex Reynolds", "Evil Uno", "Stu Grayson"]) }
 ])
 
