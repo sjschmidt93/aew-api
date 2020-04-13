@@ -1,11 +1,16 @@
 class TagTeam < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   
-  belongs_to :stable
+  has_many :tag_team_memberships
+  has_many :wrestlers, through: :tag_team_memberships
+
+  has_many :tag_team_stable_memberships
+  has_many :stables, through: :tag_team_stable_memberships
+
   has_many :sides, as: :competitor
   has_many :matches, through: :sides
+  
   has_many :reigns, as: :competitor
-  has_and_belongs_to_many :wrestlers
 
   def num_wins
     wins.count

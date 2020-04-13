@@ -1,8 +1,11 @@
 class Wrestler < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   
-  has_and_belongs_to_many :tag_teams
-  has_and_belongs_to_many :stables
+  has_many :tag_team_memberships
+  has_many :tag_teams, through: :tag_team_memberships
+  has_many :stable_memberships
+  has_many :stables, through: :stable_memberships
+
   has_many :reigns, as: :competitor
   has_many :sides, as: :competitor
   has_many :matches, through: :sides

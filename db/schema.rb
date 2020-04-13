@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_11_132758) do
+ActiveRecord::Schema.define(version: 2020_04_13_200324) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,15 @@ ActiveRecord::Schema.define(version: 2020_04_11_132758) do
     t.index ["match_id"], name: "index_sides_on_match_id"
   end
 
+  create_table "stable_memberships", force: :cascade do |t|
+    t.integer "stable_id"
+    t.integer "wrestler_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stable_id"], name: "index_stable_memberships_on_stable_id"
+    t.index ["wrestler_id"], name: "index_stable_memberships_on_wrestler_id"
+  end
+
   create_table "stables", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -91,11 +100,22 @@ ActiveRecord::Schema.define(version: 2020_04_11_132758) do
     t.index ["name"], name: "index_stables_on_name", unique: true
   end
 
-  create_table "stables_wrestlers", id: false, force: :cascade do |t|
-    t.integer "wrestler_id", null: false
-    t.integer "stable_id", null: false
-    t.index ["stable_id", "wrestler_id"], name: "index_stables_wrestlers_on_stable_id_and_wrestler_id"
-    t.index ["wrestler_id", "stable_id"], name: "index_stables_wrestlers_on_wrestler_id_and_stable_id"
+  create_table "tag_team_memberships", force: :cascade do |t|
+    t.integer "tag_team_id"
+    t.integer "wrestler_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_team_id"], name: "index_tag_team_memberships_on_tag_team_id"
+    t.index ["wrestler_id"], name: "index_tag_team_memberships_on_wrestler_id"
+  end
+
+  create_table "tag_team_stable_memberships", force: :cascade do |t|
+    t.integer "tag_team_id"
+    t.integer "stable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stable_id"], name: "index_tag_team_stable_memberships_on_stable_id"
+    t.index ["tag_team_id"], name: "index_tag_team_stable_memberships_on_tag_team_id"
   end
 
   create_table "tag_teams", force: :cascade do |t|
@@ -107,13 +127,6 @@ ActiveRecord::Schema.define(version: 2020_04_11_132758) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_tag_teams_on_name", unique: true
     t.index ["stable_id"], name: "index_tag_teams_on_stable_id"
-  end
-
-  create_table "tag_teams_wrestlers", id: false, force: :cascade do |t|
-    t.integer "wrestler_id", null: false
-    t.integer "tag_team_id", null: false
-    t.index ["tag_team_id", "wrestler_id"], name: "index_tag_teams_wrestlers_on_tag_team_id_and_wrestler_id"
-    t.index ["wrestler_id", "tag_team_id"], name: "index_tag_teams_wrestlers_on_wrestler_id_and_tag_team_id"
   end
 
   create_table "wrestlers", force: :cascade do |t|

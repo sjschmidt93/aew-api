@@ -78,24 +78,44 @@ Wrestler.create([
   { name: "Yuka Sakazaki", division: :womens},
 ])
 
-stables = Stable.create([
-  { name: "The Inner Circle", wrestlers: Wrestler.where(name: ["Sammy Guevara", "Chris Jericho", "Jake Hager", "Santana", "Ortiz"]) },
-  { name: "The Elite", wrestlers: Wrestler.where(name: ["Cody", "Adam Page", "Kenny Omega", "Matt Jackson", "Nick Jackson"]) },
-  { name: "SCU", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian", "Christopher Daniels"]) }
+# stables = Stable.create([
+#   { name: "The Inner Circle", wrestlers: Wrestler.where(name: ["Sammy Guevara", "Chris Jericho", "Jake Hager", "Santana", "Ortiz"]) },
+#   { name: "The Elite", wrestlers: Wrestler.where(name: ["Cody", "Adam Page", "Kenny Omega", "Matt Jackson", "Nick Jackson"]) },
+#   { name: "SCU", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian", "Christopher Daniels"]) }
+# ])
+
+tag_teams = TagTeam.create([
+  { name: "Private Party" },
+  { name: "Lucha Brothers" },
+  { name: "The Butcher & the Blade" },
+  { name: "Best Friends" },
+  { name: "Kenny Omega & Adam Page" },
+  { name: "The Young Bucks" },
+  { name: "Santana & Ortiz" },
+  { name: "Frankie Kazarian & Scorpio Sky" }
 ])
 
-TagTeam.create([
-  { name: "Private Party", wrestlers: Wrestler.where(name: ["Isiah Kassidy", "Marq Quen"]) },
-  #{ name: "Jurassic Express", wrestlers: Wrestler.where(name: ["Jungle Boy", "Luchasauras", "Marko Stunt"]) },
-  { name: "Lucha Brothers", wrestlers: Wrestler.where(name: ["Pentagon Jr.", "Rey Fenix"]) },
-  { name: "The Butcher & the Blade", wrestlers: Wrestler.where(name: ["The Butcher", "The Blade"]) },
-  { name: "Best Friends", wrestlers: Wrestler.where(name: ["Chuck Taylor", "Trent"]) },
-  { name: "Kenny Omega & Adam Page", wrestlers: Wrestler.where(name: ["Kenny Omega", "Adam Page"]), stable: stables[1], image_url: 'https://static.wixstatic.com/media/94b54e_3880eeb83a3147c19c1ca6c62c292a85~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/kenny-and-hangman.webp' },
-  { name: "The Young Bucks", wrestlers: Wrestler.where(name: ["Nick Jackson", "Matt Jackson"]), stable: stables[1] },
-  { name: "Santana & Ortiz", wrestlers: Wrestler.where(name: ["Santana", "Ortiz"]), stable: stables[0] },
-  { name: "Frankie Kazarian & Scorpio Sky", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian"]), stable: stables[2] }
-  #{ name: "The Dark Order", wrestlers: Wrestler.where(name: ["Brodie Lee", "John Silver", "Alex Reynolds", "Evil Uno", "Stu Grayson"]) }
+TagTeamMembership.create([
+  { tag_team: tag_teams[0], wrestler: Wrestler.find_by(name: "Isiah Kassidy") },
+  { tag_team: tag_teams[0], wrestler: Wrestler.find_by(name: "Marq Quen") },
+  { tag_team: tag_teams[5], wrestler: Wrestler.find_by(name: "Nick Jackson") },
+  { tag_team: tag_teams[5], wrestler: Wrestler.find_by(name: "Matt Jackson") },
+  { tag_team: tag_teams[4], wrestler: Wrestler.find_by(name: "Kenny Omega") },
+  { tag_team: tag_teams[4], wrestler: Wrestler.find_by(name: "Adam Page") }
 ])
+
+# TagTeam.create([
+#   { name: "Private Party", wrestlers: Wrestler.where(name: ["Isiah Kassidy", "Marq Quen"]) },
+#   #{ name: "Jurassic Express", wrestlers: Wrestler.where(name: ["Jungle Boy", "Luchasauras", "Marko Stunt"]) },
+#   { name: "Lucha Brothers", wrestlers: Wrestler.where(name: ["Pentagon Jr.", "Rey Fenix"]) },
+#   { name: "The Butcher & the Blade", wrestlers: Wrestler.where(name: ["The Butcher", "The Blade"]) },
+#   { name: "Best Friends", wrestlers: Wrestler.where(name: ["Chuck Taylor", "Trent"]) },
+#   { name: "Kenny Omega & Adam Page", wrestlers: Wrestler.where(name: ["Kenny Omega", "Adam Page"]), stable: stables[1], image_url: 'https://static.wixstatic.com/media/94b54e_3880eeb83a3147c19c1ca6c62c292a85~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/kenny-and-hangman.webp' },
+#   { name: "The Young Bucks", wrestlers: Wrestler.where(name: ["Nick Jackson", "Matt Jackson"]), stable: stables[1] },
+#   { name: "Santana & Ortiz", wrestlers: Wrestler.where(name: ["Santana", "Ortiz"]), stable: stables[0] },
+#   { name: "Evil", wrestlers: Wrestler.where(name: ["Scorpio Sky", "Frankie Kazarian"]), stable: stables[2] }
+#   #{ name: "The Dark Order", wrestlers: Wrestler.where(name: ["Brodie Lee", "John Silver", "Alex Reynolds", "Evil Uno", "Stu Grayson"]) }
+# ])
 
 events = Event.create([
   { name: "AEW Revolution", date: "2020-02-28", city: "Chicago, IL", venue: "Wintrust Arena", event_type: :ppv },

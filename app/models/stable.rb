@@ -1,7 +1,7 @@
 class Stable < ApplicationRecord
   validates :name, presence: true, uniqueness: true
-  has_many :tag_teams
-  has_and_belongs_to_many :wrestlers
+  has_many :tag_team_stable_memberships
+  has_many :stable_memberships
 
   def matches
     singles_matches + tag_team_matches
