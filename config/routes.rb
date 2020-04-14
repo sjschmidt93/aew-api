@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :championships
 
   resources :tag_teams
+  resources :events
 end

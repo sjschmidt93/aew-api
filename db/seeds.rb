@@ -123,6 +123,7 @@ events = Event.create([
   { name: "AEW Full Gear", date: "2019-11-09", city: "Baltimore, MD", venue: "Royal Farms Arena", event_type: :ppv }
 ])
 
+Match.create(event: Event)
 sides = Side.create([
   { competitor: Wrestler.find_by(name: "Jon Moxley") },
   { competitor: Wrestler.find_by(name: "Chris Jericho") }

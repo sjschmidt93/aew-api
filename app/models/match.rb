@@ -3,7 +3,7 @@ class Match < ApplicationRecord
   has_many :sides
   has_many :wrestlers, through: :sides, source: :competitor, source_type: 'Wrestler'
   has_many :tag_teams, through: :sides, source: :competitor, source_type: 'TagTeam'
-  has_one :winning_side, :class_name => "Side"
+  belongs_to :winning_side, :class_name => "Side"
 
   def all_wrestlers
     wrestlers + tag_teams.map(&:wrestlers).flatten(1)
