@@ -2,8 +2,28 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 Wrestler.create([
-  { name: "Jon Moxley", image_url: "https://static.wixstatic.com/media/94b54e_7330fb14f4cf4877b9ce60fb0b3a24f2~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/Jon%20Moxley%20Title%20History.webp" },
-  { name: "Chris Jericho", nickname: "Le Champion", image_url: "https://static.wixstatic.com/media/94b54e_2fd49ec924f140b7ad2ac3f813d69cfd~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/jericho-title-history.webp" },
+  {
+    name: "Jon Moxley",
+    image_url: "https://static.wixstatic.com/media/94b54e_7330fb14f4cf4877b9ce60fb0b3a24f2~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/Jon%20Moxley%20Title%20History.webp",
+    height: 74,
+    weight: 225,
+    hometown: "Cincinatti, Ohio"
+  },
+  {
+    name: "Chris Jericho",
+    nickname: "Le Champion",
+    image_url: "https://static.wixstatic.com/media/94b54e_2fd49ec924f140b7ad2ac3f813d69cfd~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/jericho-title-history.webp",
+    height: 72,
+    weight: 225,
+    hometown: "Winnipeg, Manitoba, Canda"
+  },
+  {
+    name: "Kenny Omega",
+    image_url: "https://imgur.com/eIZfqFd"
+  },
+])
+
+Wrestler.create([
   { name: "Adam Page", nickname: "Hangman" },
   { name: "Alex Reynolds" },
   { name: "Angelico" },
@@ -26,7 +46,6 @@ Wrestler.create([
   { name: "John Silver" },
   { name: "Jon Moxley" },
   { name: "Jungle Boy" },
-  { name: "Kenny Omega" },
   { name: "Kip Sabian", nickname: "Superbad" },
   { name: "Lance Archer" },
   { name: "Luchasauras" },
@@ -123,7 +142,6 @@ events = Event.create([
   { name: "AEW Full Gear", date: "2019-11-09", city: "Baltimore, MD", venue: "Royal Farms Arena", event_type: :ppv }
 ])
 
-Match.create(event: Event)
 sides = Side.create([
   { competitor: Wrestler.find_by(name: "Jon Moxley") },
   { competitor: Wrestler.find_by(name: "Chris Jericho") }
@@ -148,13 +166,6 @@ sides = Side.create([
 ])
 Match.create(sides: sides, event: events[2], winning_side: sides[0])
 
-# tag_teams = TagTeam.where(name: ["Kenny Omega & Adam Page", "The Young Bucks"])
-# wrestlers = Wrestler.where(name: ["Kenny Omega", "Adam Page", "Nick Jackson", "Matt Jackson"])
-# Match.create(tag_teams: tag_teams, wrestlers: wrestlers, match_type: :tag, event: event)
-
-# tag_teams = TagTeam.where(name: ["The Dark Order", "SCU"])
-# wrestlers = Wrestler.where(name: ["Evil Uno", "Stu Grayson", "Frankie Kazarian", "Scorpio Sky"])
-# Match.create(tag_teams: tag_teams, wrestlers: wrestlers, match_type: :tag, event: event)
 
 #####
 championship = Championship.create(name: "AEW World Championship")

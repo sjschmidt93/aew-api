@@ -8,4 +8,7 @@ class WrestlersController < ApplicationController
     @wrestler = Wrestler.find(params[:id])  
     render json: @wrestler
   end
+
+  def popular
+  end
 end

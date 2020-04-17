@@ -132,8 +132,11 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
   create_table "wrestlers", force: :cascade do |t|
     t.string "name", null: false
     t.string "nickname"
-    t.string "image_url"
+    t.integer "height"
+    t.integer "weight"
+    t.string "hometown"
     t.integer "division", default: 0
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_wrestlers_on_name", unique: true

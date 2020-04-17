@@ -5,8 +5,18 @@ class Match < ApplicationRecord
   has_many :tag_teams, through: :sides, source: :competitor, source_type: 'TagTeam'
   belongs_to :winning_side, :class_name => "Side"
 
+  def winner
+    winning_side.competitor.name
+  end
+
   def all_wrestlers
     wrestlers + tag_teams.map(&:wrestlers).flatten(1)
+  end
+
+  def type
+    # return "handicap" if wrestlers.count > 0 && tag_teams.count > 0
+    return "singles" if tag_teams.count == 0
+    "tag"
   end
 
   def is_singles?
@@ -21,6 +31,6 @@ class Match < ApplicationRecord
     wrestlers.count > 0 && tag_teams.count > 0
   end
   
-  enum match_type: [:singles, :tag, :cage, :battle_royal]
+  #enum stipulation
   enum finish_type: [:pin, :submision, :dq, :count_out, :draw]
 end
