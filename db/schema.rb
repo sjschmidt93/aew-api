@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
     t.string "city", null: false
     t.string "venue", null: false
     t.integer "event_type", default: 0
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_events_on_name", unique: true
@@ -54,7 +55,6 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
   create_table "matches", force: :cascade do |t|
     t.integer "event_id"
     t.integer "winning_side_id"
-    t.integer "match_type", default: 0
     t.integer "finish_type", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

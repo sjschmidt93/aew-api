@@ -6,6 +6,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string :city, null: false
       t.string :venue, null: false
       t.integer :event_type, default: 0
+      t.string :image_url
       t.timestamps
     end
   end

@@ -137,7 +137,7 @@ TagTeamMembership.create([
 # ])
 
 events = Event.create([
-  { name: "AEW Revolution", date: "2020-02-28", city: "Chicago, IL", venue: "Wintrust Arena", event_type: :ppv },
+  { name: "AEW Revolution", date: "2020-02-28", city: "Chicago, IL", venue: "Wintrust Arena", event_type: :ppv, image_url: "https://wrestlingnews.co/wp-content/uploads/2019/12/AEW-Revolution-scaled-1280x720.png" },
   { name: "AEW Double or Nothing", date: "2019-05-25", city: "Las Vegas, NV", venue: "MGM Grand Garden Arena", event_type: :ppv },
   { name: "AEW Full Gear", date: "2019-11-09", city: "Baltimore, MD", venue: "Royal Farms Arena", event_type: :ppv }
 ])
