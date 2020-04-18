@@ -12,6 +12,8 @@ class TagTeam < ApplicationRecord
   
   has_many :reigns, as: :competitor
 
+  scope :official, -> { where(is_official: true) }
+
   def num_wins
     wins.count
   end

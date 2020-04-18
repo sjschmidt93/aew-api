@@ -8,4 +8,9 @@ class TagTeamsController < ApplicationController
     @tag_team = TagTeam.find(params[:id])
     render json: @tag_team
   end
+
+  def official
+    @tag_teams = TagTeam.official
+    render json: @tag_teams
+  end
 end

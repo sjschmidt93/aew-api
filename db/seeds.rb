@@ -137,9 +137,37 @@ TagTeamMembership.create([
 # ])
 
 events = Event.create([
-  { name: "AEW Revolution", date: "2020-02-28", city: "Chicago, IL", venue: "Wintrust Arena", event_type: :ppv, image_url: "https://wrestlingnews.co/wp-content/uploads/2019/12/AEW-Revolution-scaled-1280x720.png" },
-  { name: "AEW Double or Nothing", date: "2019-05-25", city: "Las Vegas, NV", venue: "MGM Grand Garden Arena", event_type: :ppv },
-  { name: "AEW Full Gear", date: "2019-11-09", city: "Baltimore, MD", venue: "Royal Farms Arena", event_type: :ppv }
+  {
+    name: "AEW Revolution",
+    date: "2020-02-28",
+    city: "Chicago, IL",
+    venue: "Wintrust Arena",
+    program: :ppv,
+    image_url: "https://wrestlingnews.co/wp-content/uploads/2019/12/AEW-Revolution-scaled-1280x720.png"
+  },
+  {
+    name: "AEW Double or Nothing",
+    date: "2019-05-25",
+    city: "Las Vegas, NV",
+    venue: "MGM Grand Garden Arena",
+    program: :ppv,
+    image_url: "https://cdn.prowrestlingsheet.com/app/uploads/2020/04/14175137/double-or-nothing.jpg"
+  },
+  {
+    name: "AEW Full Gear",
+    date: "2019-11-09",
+    city: "Baltimore, MD",
+    venue: "Royal Farms Arena",
+    program: :ppv,
+    image_url: "https://s33079.pcdn.co/wp-content/uploads/2019/11/AEW-Full-Gear-1.png"
+  },
+  {
+    name: "AEW Dynamite",
+    date: "2020-04-30",
+    city: "Broomfield, CO",
+    venue: "1stBank Center",
+    program: :dynamite
+  }
 ])
 
 sides = Side.create([
@@ -165,6 +193,24 @@ sides = Side.create([
   { competitor: TagTeam.find_by(name: "The Young Bucks") }
 ])
 Match.create(sides: sides, event: events[2], winning_side: sides[0])
+
+### dynamite match
+
+tag_team = TagTeam.create(name: "Chris Jericho & Sammy Guevara", is_official: false)
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Chris Jericho"), tag_team: tag_team)
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Sammy Guevara"), tag_team: tag_team)
+
+tag_team = TagTeam.create(name: "Darby Allin & Jon Moxley", is_official: false)
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Darby Allin"), tag_team: tag_team)
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Jon Moxley"), tag_team: tag_team)
+
+sides = Side.create([
+  { competitor: TagTeam.find_by(name: "Chris Jericho & Sammy Guevara") },
+  { competitor: TagTeam.find_by(name: "Darby Allin & Jon Moxley") }
+])
+Match.create(sides: sides, event: events[3], winning_side: sides[1])
+
+### end dynamite match
 
 
 #####

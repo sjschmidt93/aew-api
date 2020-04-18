@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :tag_teams do
     resources :matches, controller: 'tag_team_matches'
+    get 'official', on: :collection
   end
 
   resources :events do
