@@ -214,7 +214,7 @@ Match.create(sides: sides, event: events[3], winning_side: sides[1])
 
 
 #####
-championship = Championship.create(name: "AEW World Championship")
+championship = Championship.create(name: "AEW World Championship", image_url: "https://i.imgur.com/5OOLdK7.png")
 
 reigns = Reign.create([
   { start_date: "2019-08-31", end_date: "2020-02-20", competitor: Wrestler.find_by(name: "Chris Jericho"), championship: championship },
