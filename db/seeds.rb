@@ -27,18 +27,28 @@ Wrestler.create([
   { name: "Adam Page", nickname: "Hangman" },
   { name: "Alex Reynolds" },
   { name: "Angelico" },
-  { name: "Brodie Lee", nickname: "The Exalted One", image_url: "https://static.wixstatic.com/media/94b54e_c2e36f3b4df94800b68f9a2d3aedb01d~mv2.jpg/v1/fill/w_320,h_478,fp_0.50_0.50,q_90/94b54e_c2e36f3b4df94800b68f9a2d3aedb01d~mv2.webp" },
+  {
+    name: "Brodie Lee",
+    nickname: "The Exalted One",
+    image_url: "https://static.wixstatic.com/media/94b54e_c2e36f3b4df94800b68f9a2d3aedb01d~mv2.jpg/v1/fill/w_320,h_478,fp_0.50_0.50,q_90/94b54e_c2e36f3b4df94800b68f9a2d3aedb01d~mv2.webp"
+  },
   { name: "Brandon Cutler" },
   { name: "Christopher Daniels" },
   { name: "Chuck Taylor" },
   { name: "Cima" },
   { name: "Cody" },
   { name: "Colt Cabana" },
-  { name: "Darby Allin" },
+  {
+    name: "Darby Allin",
+    image_url: "https://i.imgur.com/5mwPcLu.png"
+  },
   { name: "Dustin Rhodes", nickname: "The Natural" },
   { name: "Evil Uno" },
   { name: "Frankie Kazarian" },
-  { name: "Isiah Kassidy" },
+  {
+    name: "Isiah Kassidy",
+    image_url: "https://i.imgur.com/QYr1rr0.png"
+  },
   { name: "Jack Evans" },
   { name: "Jake Hager" },
   { name: "Jimmy Havoc" },
@@ -54,18 +64,27 @@ Wrestler.create([
   { name: "Matt Jackson" },
   { name: "MJF", nickname: "Maxwell Jacob Friedman" },
   { name: "Marko Stunt" },
-  { name: "Marq Quen" },
+  { 
+    name: "Marq Quen",
+    image_url: "https://i.imgur.com/uh7Ry5G.png"
+  },
   { name: "Michael Nakazawa" },
   { name: "Nick Jackson" },
   { name: "Orange Cassidy" },
-  { name: "Ortiz" },
+  {
+    name: "Ortiz",
+    image_url: "https://i.imgur.com/O7kyuQ1.png"
+  },
   { name: "Pac", nickname: "The Bastard" },
   { name: "Pentagon Jr." },
   { name: "Peter Avalon" },
   { name: "QT Marshall"},
   { name: "Rey Fenix" },
   { name: "Sammy Guevara", nickname: "Spanish God" },
-  { name: "Santana" },
+  {
+    name: "Santana",
+    image_url: "https://i.imgur.com/pLgKcq6.png"
+  },
   { name: "Scorpio Sky" },
   { name: "Shawn Spears" },
   { name: "Sonny Kiss" },
@@ -80,7 +99,11 @@ Wrestler.create([
   { name: "Allie", division: :womens, nickname: "The Bunny" },
   { name: "Anna Jay", division: :womens},
   { name: "Awesome Kong", division: :womens},
-  { name: "Bea Priestley", division: :womens, image_url: 'https://static.wixstatic.com/media/94b54e_7763a8f70531426da08fd7fe118682af~mv2.jpg/v1/fill/w_320,h_478,fp_0.50_0.50,q_90/94b54e_7763a8f70531426da08fd7fe118682af~mv2.webp'},
+  { 
+    name: "Bea Priestley",
+    division: :womens,
+    image_url: 'https://static.wixstatic.com/media/94b54e_7763a8f70531426da08fd7fe118682af~mv2.jpg/v1/fill/w_320,h_478,fp_0.50_0.50,q_90/94b54e_7763a8f70531426da08fd7fe118682af~mv2.webp'
+  },
   { name: "Big Swole", division: :womens},
   { name: "Brandi Rhodes", division: :womens},
   { name: "Britt Baker", division: :womens},
@@ -212,6 +235,32 @@ Match.create(sides: sides, event: events[3], winning_side: sides[1])
 
 ### end dynamite match
 
+### six man tag TODO: make tag teams self-referential
+
+event = Event.create!({
+  name: "AEW Dynamite",
+  date: "2020-01-29",
+  city: "Cleveland, OH",
+  venue: "Wolstein Center",
+  program: :dynamite
+})
+
+tag_team = TagTeam.create(name: "Chris Jericho & Santana & Ortiz")
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Chris Jericho"), tag_team: tag_team)
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Santana"), tag_team: tag_team)
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Ortiz"), tag_team: tag_team)
+
+tag_team = TagTeam.create(name: "Darby Allin & Private Party")
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Darby Allin"), tag_team: tag_team)
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Isiah Kassidy"), tag_team: tag_team)
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Marq Quen"), tag_team: tag_team)
+
+sides = Side.create([
+  { competitor: TagTeam.find_by(name: "Chris Jericho & Santana & Ortiz") },
+  { competitor: TagTeam.find_by(name: "Darby Allin & Private Party") }
+])
+Match.create(sides: sides, event: event, winning_side: sides[0])
+###
 
 #####
 championship = Championship.create(name: "AEW World Championship", image_url: "https://i.imgur.com/5OOLdK7.png")
