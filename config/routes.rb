@@ -16,6 +16,5 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :matches, controller: 'event_matches'
-    get 'recent', on: :collection
   end
 end
