@@ -7,7 +7,7 @@ Wrestler.create([
     image_url: "https://static.wixstatic.com/media/94b54e_7330fb14f4cf4877b9ce60fb0b3a24f2~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/Jon%20Moxley%20Title%20History.webp",
     height: 74,
     weight: 225,
-    hometown: "Cincinatti, Ohio"
+    hometown: "Cincinnati, Ohio"
   },
   {
     name: "Chris Jericho",
@@ -237,7 +237,7 @@ Match.create(sides: sides, event: events[3], winning_side: sides[1])
 
 ### six man tag TODO: make tag teams self-referential
 
-event = Event.create!({
+event = Event.create({
   name: "AEW Dynamite",
   date: "2020-01-29",
   city: "Cleveland, OH",
@@ -265,14 +265,21 @@ Match.create(sides: sides, event: event, winning_side: sides[0])
 #####
 championship = Championship.create(name: "AEW World Championship", image_url: "https://i.imgur.com/5OOLdK7.png")
 
-reigns = Reign.create([
+Reign.create([
   { start_date: "2019-08-31", end_date: "2020-02-20", competitor: Wrestler.find_by(name: "Chris Jericho"), championship: championship },
   { start_date: "2020-02-29", competitor: Wrestler.find_by(name: "Jon Moxley"), championship: championship }
 ])
 
 championship = Championship.create(name: "World Tag Team Championship")
 
-reigns = Reign.create([
+Reign.create([
   { start_date: "2019-10-30", end_date: "2020-01-21", competitor: TagTeam.find_by(name: "SCU"), championship: championship },
   { start_date: "2020-01-21", competitor: TagTeam.find_by(name: "Kenny Omega & Adam Page"), championship: championship }
+])
+
+championship = Championship.create({ name: "AEW Women's World Championship", image_url: "https://i.imgur.com/GFhjs9w.png" })
+
+Reign.create([
+  { start_date: "2019-10-02", end_date: "2020-02-12", competitor: Wrestler.find_by(name: "Riho"), championship: championship },
+  { start_date: "2020-02-12", competitor: Wrestler.find_by(name: "Nyla Rose"), championship: championship }
 ])

@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :matches, controller: 'wrestler_matches'
   end
 
-  resources :championships
+  resources :reigns do
+    get 'active', on: :collection
+  end
 
   resources :tag_teams do
     resources :matches, controller: 'tag_team_matches'
