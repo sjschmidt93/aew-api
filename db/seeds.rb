@@ -269,7 +269,7 @@ Match.create(sides: sides, event: event, winning_side: sides[0])
 championship = Championship.create(name: "AEW World Championship", image_url: "https://i.imgur.com/5OOLdK7.png")
 
 Reign.create([
-  { start_date: "2019-08-31", end_date: "2020-02-20", competitor: Wrestler.find_by(name: "Chris Jericho"), championship: championship },
+  { start_date: "2019-08-31", end_date: "2020-02-29", competitor: Wrestler.find_by(name: "Chris Jericho"), championship: championship },
   { start_date: "2020-02-29", competitor: Wrestler.find_by(name: "Jon Moxley"), championship: championship }
 ])
 

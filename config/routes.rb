@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get 'active', on: :collection
   end
 
+  resources :championships
+
   resources :tag_teams do
     resources :matches, controller: 'tag_team_matches'
     get 'official', on: :collection
