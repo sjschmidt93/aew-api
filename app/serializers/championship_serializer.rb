@@ -11,7 +11,7 @@ class ChampionshipSerializer < ActiveModel::Serializer
 end
 
 class ChampionshipReignSerializer < ActiveModel::Serializer
-  attributes :start_date, :end_date, :length
+  attributes :start_date, :end_date, :length, :competitor_type
 
   belongs_to :competitor, serializer: CompetitorSerializer
 end
