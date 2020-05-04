@@ -127,17 +127,18 @@ Wrestler.create([
 # ])
 
 tag_teams = TagTeam.create([
-  { name: "Private Party" },
-  { name: "Lucha Brothers" },
-  { name: "The Butcher & the Blade" },
-  { name: "Best Friends" },
+  { name: "Private Party", is_official: true },
+  { name: "Lucha Brothers", is_official: true },
+  { name: "The Butcher & the Blade", is_official: true },
+  { name: "Best Friends", is_official: true },
   {
     name: "Kenny Omega & Adam Page",
-    image_url: "https://static.wixstatic.com/media/94b54e_3880eeb83a3147c19c1ca6c62c292a85~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/kenny-and-hangman.webp"
+    image_url: "https://static.wixstatic.com/media/94b54e_3880eeb83a3147c19c1ca6c62c292a85~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/kenny-and-hangman.webp",
+    is_official: true
   },
-  { name: "The Young Bucks" },
-  { name: "Santana & Ortiz" },
-  { name: "Frankie Kazarian & Scorpio Sky" }
+  { name: "The Young Bucks", is_official: true },
+  { name: "Santana & Ortiz", is_official: true },
+  { name: "Frankie Kazarian & Scorpio Sky", is_official: true }
 ])
 
 TagTeamMembership.create([
@@ -228,11 +229,11 @@ Match.create(sides: sides, event: events[2], winning_side: sides[0])
 
 ### dynamite match
 
-tag_team = TagTeam.create(name: "Chris Jericho & Sammy Guevara", is_official: false)
+tag_team = TagTeam.create(name: "Chris Jericho & Sammy Guevara")
 TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Chris Jericho"), tag_team: tag_team)
 TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Sammy Guevara"), tag_team: tag_team)
 
-tag_team = TagTeam.create(name: "Darby Allin & Jon Moxley", is_official: false)
+tag_team = TagTeam.create(name: "Darby Allin & Jon Moxley")
 TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Darby Allin"), tag_team: tag_team)
 TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Jon Moxley"), tag_team: tag_team)
 

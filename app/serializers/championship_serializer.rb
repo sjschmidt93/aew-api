@@ -4,6 +4,10 @@ class ChampionshipSerializer < ActiveModel::Serializer
   def reigns
     ActiveModel::SerializableResource.new(object.reigns,  each_serializer: ChampionshipReignSerializer)
   end
+
+  def matches
+    ActiveModel::SerializableResource.new(object.matches,  each_serializer: MatchSerializer)
+  end
 end
 
 class ChampionshipReignSerializer < ActiveModel::Serializer
