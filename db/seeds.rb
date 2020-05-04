@@ -29,8 +29,7 @@ Wrestler.create([
   { name: "Angelico" },
   {
     name: "Brodie Lee",
-    nickname: "The Exalted One",
-    image_url: "https://static.wixstatic.com/media/94b54e_c2e36f3b4df94800b68f9a2d3aedb01d~mv2.jpg/v1/fill/w_320,h_478,fp_0.50_0.50,q_90/94b54e_c2e36f3b4df94800b68f9a2d3aedb01d~mv2.webp"
+    nickname: "The Exalted One"
   },
   { name: "Brandon Cutler" },
   { name: "Christopher Daniels" },
@@ -101,8 +100,7 @@ Wrestler.create([
   { name: "Awesome Kong", division: :womens},
   { 
     name: "Bea Priestley",
-    division: :womens,
-    image_url: 'https://static.wixstatic.com/media/94b54e_7763a8f70531426da08fd7fe118682af~mv2.jpg/v1/fill/w_320,h_478,fp_0.50_0.50,q_90/94b54e_7763a8f70531426da08fd7fe118682af~mv2.webp'
+    division: :womens
   },
   { name: "Big Swole", division: :womens},
   { name: "Brandi Rhodes", division: :womens},
