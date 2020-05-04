@@ -56,8 +56,10 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
     t.integer "event_id"
     t.integer "winning_side_id"
     t.integer "finish_type", default: 0
+    t.integer "championship_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["championship_id"], name: "index_matches_on_championship_id"
     t.index ["event_id"], name: "index_matches_on_event_id"
     t.index ["winning_side_id"], name: "index_matches_on_winning_side_id"
   end

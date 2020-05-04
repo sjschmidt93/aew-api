@@ -4,6 +4,7 @@ class Match < ApplicationRecord
   has_many :wrestlers, through: :sides, source: :competitor, source_type: 'Wrestler'
   has_many :tag_teams, through: :sides, source: :competitor, source_type: 'TagTeam'
   belongs_to :winning_side, :class_name => "Side"
+  belongs_to :championship, optional: true
 
   def winner
     winning_side.competitor.name
@@ -19,18 +20,6 @@ class Match < ApplicationRecord
     "tag"
   end
 
-  def is_singles?
-    tag_teams.count == 0
-  end
-
-  def is_tag?
-    wrestlers.count == 0
-  end
-
-  def is_handicap?
-    wrestlers.count > 0 && tag_teams.count > 0
-  end
-  
   #enum stipulation
   enum finish_type: [:pin, :submision, :dq, :count_out, :draw]
 end

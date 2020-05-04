@@ -1,5 +1,5 @@
 class ChampionshipSerializer < ActiveModel::Serializer
-  attributes :name, :image_url, :reigns
+  attributes :name, :image_url, :reigns, :matches
 
   def reigns
     ActiveModel::SerializableResource.new(object.reigns,  each_serializer: ChampionshipReignSerializer)
