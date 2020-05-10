@@ -7,7 +7,8 @@ class ReignSerializer < ActiveModel::Serializer
     @instance_options[:include_competitor]
   end
 
-  def championship
-    ActiveModel::SerializableResource.new(object.championship,  serializer: ChampionshipSerializer)
-  end
+  # TODO: figure out why this doesn't work
+  # def championship
+  #   ActiveModel::SerializableResource.new(object.championship,  serializer: ChampionshipSerializer)
+  # end
 end
