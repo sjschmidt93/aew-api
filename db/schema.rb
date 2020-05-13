@@ -57,14 +57,14 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
 
   create_table "matches", force: :cascade do |t|
     t.bigint "event_id"
-    t.bigint "side_id"
+    t.bigint "winning_side_id"
     t.integer "finish_type", default: 0
     t.bigint "championship_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["championship_id"], name: "index_matches_on_championship_id"
     t.index ["event_id"], name: "index_matches_on_event_id"
-    t.index ["side_id"], name: "index_matches_on_side_id"
+    t.index ["winning_side_id"], name: "index_matches_on_winning_side_id"
   end
 
   create_table "reigns", force: :cascade do |t|
