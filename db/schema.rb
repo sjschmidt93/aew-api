@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_04_13_200324) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -53,23 +56,23 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "winning_side_id"
+    t.bigint "event_id"
+    t.bigint "side_id"
     t.integer "finish_type", default: 0
-    t.integer "championship_id"
+    t.bigint "championship_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["championship_id"], name: "index_matches_on_championship_id"
     t.index ["event_id"], name: "index_matches_on_event_id"
-    t.index ["winning_side_id"], name: "index_matches_on_winning_side_id"
+    t.index ["side_id"], name: "index_matches_on_side_id"
   end
 
   create_table "reigns", force: :cascade do |t|
     t.date "start_date", null: false
     t.date "end_date"
-    t.integer "championship_id"
+    t.bigint "championship_id"
     t.string "competitor_type"
-    t.integer "competitor_id"
+    t.bigint "competitor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["championship_id"], name: "index_reigns_on_championship_id"
@@ -77,9 +80,9 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
   end
 
   create_table "sides", force: :cascade do |t|
-    t.integer "match_id"
+    t.bigint "match_id"
     t.string "competitor_type"
-    t.integer "competitor_id"
+    t.bigint "competitor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["competitor_type", "competitor_id"], name: "index_sides_on_competitor_type_and_competitor_id"
@@ -87,8 +90,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
   end
 
   create_table "stable_memberships", force: :cascade do |t|
-    t.integer "stable_id"
-    t.integer "wrestler_id"
+    t.bigint "stable_id"
+    t.bigint "wrestler_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["stable_id"], name: "index_stable_memberships_on_stable_id"
@@ -103,8 +106,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
   end
 
   create_table "tag_team_memberships", force: :cascade do |t|
-    t.integer "tag_team_id"
-    t.integer "wrestler_id"
+    t.bigint "tag_team_id"
+    t.bigint "wrestler_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tag_team_id"], name: "index_tag_team_memberships_on_tag_team_id"
@@ -112,8 +115,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
   end
 
   create_table "tag_team_stable_memberships", force: :cascade do |t|
-    t.integer "tag_team_id"
-    t.integer "stable_id"
+    t.bigint "tag_team_id"
+    t.bigint "stable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["stable_id"], name: "index_tag_team_stable_memberships_on_stable_id"
@@ -122,10 +125,10 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
 
   create_table "tag_teams", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "stable_id"
+    t.bigint "stable_id"
     t.string "nickname"
     t.string "image_url"
-    t.boolean "is_official", default: true
+    t.boolean "is_official", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_tag_teams_on_name", unique: true
@@ -146,5 +149,4 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "matches", "sides", column: "winning_side_id"
 end
