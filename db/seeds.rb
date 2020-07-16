@@ -227,7 +227,7 @@ Match.create(sides: sides, event: events[2], winning_side: sides[0])
 
 ### dynamite match
 
-tag_team = TagTeam.create(name: "Chris Jericho & Sammy Guevara")
+tag_team = TagTeam.create(name: "Le Sex Gods", is_official: true )
 TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Chris Jericho"), tag_team: tag_team)
 TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Sammy Guevara"), tag_team: tag_team)
 
@@ -236,7 +236,7 @@ TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Darby Allin"), tag_te
 TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Jon Moxley"), tag_team: tag_team)
 
 sides = Side.create([
-  { competitor: TagTeam.find_by(name: "Chris Jericho & Sammy Guevara") },
+  { competitor: TagTeam.find_by(name: "Le Sex Gods") },
   { competitor: TagTeam.find_by(name: "Darby Allin & Jon Moxley") }
 ])
 Match.create(sides: sides, event: events[3], winning_side: sides[1])
