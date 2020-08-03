@@ -60,8 +60,6 @@ Match.create(sides: sides, event: events[2], winning_side: sides[0])
 
 ### dynamite match
 
-
-
 sides = Side.create([
   { competitor: TagTeam.find_by(name: "Le Sex Gods") },
   { competitor: TagTeam.find_by(name: "Darby Allin & Jon Moxley") }
@@ -82,6 +80,10 @@ event = Event.create(
 )
 
 SeedHelpers::create_singles_match("Cody", "Warhorse", event)
+SeedHelpers::create_tag_match("Jurassic Express & Best Friends & Orange Cassidy", "Inner Circle", event)
+SeedHelpers::create_tag_match("Kenny Omega & Adam Page", "Dark Order (Evil Uno & Stu Grayson)", event)
+SeedHelpers::create_singles_match("Hikaru Shida", "Diamante", event)
+SeedHelpers::create_tag_match("Darby Allin & Jon Moxley", "Brian Cage & Ricky Starks", event)
 
 #### end dynamite 7/29/20
 
