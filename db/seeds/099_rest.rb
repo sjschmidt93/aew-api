@@ -46,17 +46,7 @@ championships = Championship.create([
   { name: "AEW Women's World Championship", image_url: "https://i.imgur.com/GFhjs9w.png" }
 ])
 
-# sides = Side.create([
-#   { competitor: Wrestler.find_by(name: "") },
-#   { competitor: Wrestler.find_by(name: "") }
-# ])
-# Match.create(sides: sides, event: events[], winning_side: sides[0])
-
-sides = Side.create([
-  { competitor: Wrestler.find_by(name: "Jon Moxley") },
-  { competitor: Wrestler.find_by(name: "Chris Jericho") }
-])
-Match.create(sides: sides, event: events[0], winning_side: sides[0], championship: championships[0])
+SeedHelpers::create_singles_match("Jon Moxley", "Chris Jericho", events[0], championships[0])
 
 SeedHelpers::create_tag_match("Kenny Omega & Adam Page", "The Young Bucks", events[0])
 

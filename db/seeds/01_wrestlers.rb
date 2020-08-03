@@ -24,6 +24,7 @@ Wrestler.create([
   { name: "Adam Page", nickname: "Hangman" },
   { name: "Alex Reynolds" },
   { name: "Angelico" },
+  { name: "Brian Cage" },
   {
     name: "Brodie Lee",
     nickname: "The Exalted One"
@@ -39,6 +40,7 @@ Wrestler.create([
     image_url: "https://i.imgur.com/5mwPcLu.png"
   },
   { name: "Dustin Rhodes", nickname: "The Natural" },
+  { name: "Eddie Kingston" },
   { name: "Evil Uno" },
   { name: "Frankie Kazarian" },
   {
@@ -76,6 +78,7 @@ Wrestler.create([
   { name: "Peter Avalon" },
   { name: "QT Marshall"},
   { name: "Rey Fenix" },
+  { name: "Ricky Starks" },
   { name: "Sammy Guevara", nickname: "Spanish God" },
   {
     name: "Santana",
@@ -89,7 +92,10 @@ Wrestler.create([
   { name: "The Blade" },
   { name: "Trent" },
   { name: "Wardlow" },
-  # unsigned
+])
+
+## unsigned men
+Wrestler.create([
   { name: "Warhorse" }
 ])
 
@@ -115,4 +121,9 @@ Wrestler.create([
   { name: "Sadie Gibbs", division: :womens},
   { name: "Shanna", division: :womens},
   { name: "Yuka Sakazaki", division: :womens},
+])
+
+## unsigned women
+Wrestler.create([
+  { name: "Diamante"}
 ])

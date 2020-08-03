@@ -1,10 +1,10 @@
 class SeedHelpers
-  def self.create_singles_match(winner, loser, event)
+  def self.create_singles_match(winner, loser, event, championship = nil)
     sides = Side.create([
       { competitor: Wrestler.find_by(name: winner) },
       { competitor: Wrestler.find_by(name: loser) }
     ])
-    Match.create(sides: sides, event: event, winning_side: sides[0])
+    Match.create(sides: sides, event: event, winning_side: sides[0], championship: championship)
   end
 
   def self.create_tag_match(winner, loser, event)
