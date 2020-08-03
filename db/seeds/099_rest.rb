@@ -41,10 +41,10 @@ events = Event.create([
 ])
 
 
+# TODO: make enums for championship string literals
+SeedHelpers::create_singles_match("Jon Moxley", "Chris Jericho", events[0], "AEW World Championship")
 
-SeedHelpers::create_singles_match("Jon Moxley", "Chris Jericho", events[0], championships[0])
-
-SeedHelpers::create_tag_match("Kenny Omega & Adam Page", "The Young Bucks", events[0])
+SeedHelpers::create_tag_match("Kenny Omega & Adam Page", "The Young Bucks", events[0], "AEW World Tag Team Championship")
 
 sides = Side.create([
   { competitor: Wrestler.find_by(name: "Kenny Omega") },
@@ -60,13 +60,7 @@ Match.create(sides: sides, event: events[2], winning_side: sides[0])
 
 ### dynamite match
 
-tag_team = TagTeam.create(name: "Le Sex Gods", is_official: true )
-TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Chris Jericho"), tag_team: tag_team)
-TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Sammy Guevara"), tag_team: tag_team)
 
-tag_team = TagTeam.create(name: "Darby Allin & Jon Moxley")
-TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Darby Allin"), tag_team: tag_team)
-TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Jon Moxley"), tag_team: tag_team)
 
 sides = Side.create([
   { competitor: TagTeam.find_by(name: "Le Sex Gods") },

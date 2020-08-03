@@ -1,3 +1,5 @@
+require_relative '../seed_helpers'
+
 tag_teams = TagTeam.create([
   { name: "Private Party", is_official: true },
   { name: "Lucha Brothers", is_official: true },
@@ -13,11 +15,19 @@ tag_teams = TagTeam.create([
   { name: "Frankie Kazarian & Scorpio Sky", is_official: true }
 ])
 
+SeedHelpers::create_tag_team("Le Sex Gods", true, ["Chris Jericho", "Sammy Guevara"])
+
 TagTeamMembership.create([
   { tag_team: tag_teams[0], wrestler: Wrestler.find_by(name: "Isiah Kassidy") },
   { tag_team: tag_teams[0], wrestler: Wrestler.find_by(name: "Marq Quen") },
   { tag_team: tag_teams[5], wrestler: Wrestler.find_by(name: "Nick Jackson") },
   { tag_team: tag_teams[5], wrestler: Wrestler.find_by(name: "Matt Jackson") },
   { tag_team: tag_teams[4], wrestler: Wrestler.find_by(name: "Kenny Omega") },
-  { tag_team: tag_teams[4], wrestler: Wrestler.find_by(name: "Adam Page") }
+  { tag_team: tag_teams[4], wrestler: Wrestler.find_by(name: "Adam Page") },
 ])
+
+
+# unofficial
+tag_team = TagTeam.create(name: "Darby Allin & Jon Moxley")
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Darby Allin"), tag_team: tag_team)
+TagTeamMembership.create(wrestler: Wrestler.find_by(name: "Jon Moxley"), tag_team: tag_team)
