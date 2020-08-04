@@ -124,14 +124,14 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
   end
 
   create_table "tag_teams", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.bigint "stable_id"
     t.string "nickname"
     t.string "image_url"
     t.boolean "is_official", default: false
+    t.integer "naming_convention", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_tag_teams_on_name", unique: true
     t.index ["stable_id"], name: "index_tag_teams_on_stable_id"
   end
 
