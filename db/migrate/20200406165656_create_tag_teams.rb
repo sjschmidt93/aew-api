@@ -6,7 +6,6 @@ class CreateTagTeams < ActiveRecord::Migration[6.0]
       t.string :nickname
       t.string :image_url
       t.boolean :is_official, default: false
-      t.integer :naming_convention, default: 0
       t.timestamps
     end
   end

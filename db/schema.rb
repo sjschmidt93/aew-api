@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_200324) do
+ActiveRecord::Schema.define(version: 2020_08_07_164923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,13 +123,21 @@ ActiveRecord::Schema.define(version: 2020_04_13_200324) do
     t.index ["tag_team_id"], name: "index_tag_team_stable_memberships_on_tag_team_id"
   end
 
+  create_table "tag_team_sub_team_memberships", force: :cascade do |t|
+    t.bigint "parent_team_id"
+    t.bigint "sub_team_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_team_id"], name: "index_tag_team_sub_team_memberships_on_parent_team_id"
+    t.index ["sub_team_id"], name: "index_tag_team_sub_team_memberships_on_sub_team_id"
+  end
+
   create_table "tag_teams", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "stable_id"
     t.string "nickname"
     t.string "image_url"
     t.boolean "is_official", default: false
-    t.integer "naming_convention", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_tag_teams_on_name", unique: true

@@ -85,9 +85,21 @@ SeedHelpers::create_tag_match("Kenny Omega & Adam Page", "Dark Order (Evil Uno &
 SeedHelpers::create_singles_match("Hikaru Shida", "Diamante", event)
 SeedHelpers::create_tag_match("Darby Allin & Jon Moxley", "Brian Cage & Ricky Starks", event)
 
-#### end dynamite 7/29/20
+#### dynamite 8/5/20
 
+event = Event.create(
+  name: "AEW Dynamite",
+  date: "2020-08-05",
+  city: "Jacksonville, FL",
+  venue: "Daily's Place",
+  program: :dynamite
+)
 
+SeedHelpers::create_tag_match(
+  "Dark Order (5 & 9 & Colt Cabana & Evil Uno & Stu Grayson & Brodie Lee)",
+  "Kenny Omega & Adam Page & FTR & The Young Bucks",
+  event
+)
 
 ### six man tag TODO: make tag teams self-referential
 

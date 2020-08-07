@@ -12,8 +12,18 @@ class TagTeam < ApplicationRecord
   
   has_many :reigns, as: :competitor
 
+  has_many :sub_team_memberships, foreign_key: 'parent_team_id', class_name: 'TagTeamSubTeamMembership'
+  has_many :sub_teams, through: :sub_team_memberships, source: :sub_team
+
+  has_many :parent_team_memberships, foreign_key: 'sub_team_id', class_name: 'TagTeamSubTeamMembership'
+  has_many :parent_teams, through: :parent_team_memberships, source: :parent_team
+
   scope :official, -> { where(is_official: true) }
   
+  # def matches
+
+  # end
+
   def num_wins
     wins.count
   end

@@ -21,6 +21,8 @@ Wrestler.create([
 ])
 
 Wrestler.create([
+  { name: "5" },
+  { name: "9" },
   { name: "Adam Page", nickname: "Hangman" },
   { name: "Alex Reynolds" },
   { name: "Angelico" },
@@ -30,6 +32,7 @@ Wrestler.create([
     nickname: "The Exalted One"
   },
   { name: "Brandon Cutler" },
+  { name: "Cash Wheeler" },
   { name: "Christopher Daniels" },
   { name: "Chuck Taylor" },
   { name: "Cima" },
@@ -39,6 +42,7 @@ Wrestler.create([
     name: "Darby Allin",
     image_url: "https://i.imgur.com/5mwPcLu.png"
   },
+  { name: "Dax Harwood" },
   { name: "Dustin Rhodes", nickname: "The Natural" },
   { name: "Eddie Kingston" },
   { name: "Evil Uno" },

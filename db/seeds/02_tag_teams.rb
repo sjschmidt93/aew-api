@@ -10,6 +10,7 @@ SeedHelpers::create_tag_team("Lucha Brothers", true, ["Pentagon Jr.", "Rey Fenix
 SeedHelpers::create_tag_team("The Butcher & the Blade", true, ["The Butcher", "The Blade"])
 SeedHelpers::create_tag_team("Best Friends", true, ["Chuck Taylor", "Trent"])
 SeedHelpers::create_tag_team("Santana & Ortiz", true, ["Santana", "Ortiz"])
+SeedHelpers::create_tag_team("FTR", true, ["Dax Harwood", "Cash Wheeler"])
 
 
 # unofficial
@@ -18,3 +19,15 @@ SeedHelpers::create_tag_team("Inner Circle", false, ["Chris Jericho", "Sammy Gue
 
 SeedHelpers::create_tag_team("Darby Allin & Jon Moxley", false, ["Darby Allin", "Jon Moxley"])
 SeedHelpers::create_tag_team("Brian Cage & Ricky Starks", false, ["Brian Cage", "Ricky Starks"])
+SeedHelpers::create_tag_team(
+  "Dark Order (5 & 9 & Colt Cabana & Evil Uno & Stu Grayson & Brodie Lee)",
+  false,
+  ["5", "9", "Colt Cabana", "Evil Uno", "Stu Grayson", "Brodie Lee"]
+) # id: 16
+
+SeedHelpers::create_tag_team(
+  "Kenny Omega & Adam Page & FTR & The Young Bucks",
+  false,
+  ["Kenny Omega", "Adam Page", "Matt Jackson", "Nick Jackson", "Dax Harwood", "Cash Wheeler"],
+  ["Kenny Omega & Adam Page", "The Young Bucks", "FTR"]
+)
