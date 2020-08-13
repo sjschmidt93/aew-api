@@ -24,6 +24,10 @@ class TagTeam < ApplicationRecord
 
   # end
 
+  def matches_as_sub_team
+    parent_teams.map(&:matches)
+  end
+
   def num_wins
     wins.count
   end
