@@ -12,18 +12,25 @@ Wrestler.create([
     image_url: "https://static.wixstatic.com/media/94b54e_2fd49ec924f140b7ad2ac3f813d69cfd~mv2.jpg/v1/fill/w_260,h_260,al_c,q_80,usm_0.66_1.00_0.01/jericho-title-history.webp",
     height: 72,
     weight: 225,
-    hometown: "Winnipeg, Manitoba, Canda"
+    hometown: "Winnipeg, Manitoba, Canada"
   },
   {
     name: "Kenny Omega",
-    image_url: "https://imgur.com/eIZfqFd"
+    nickname: "The Cleaner",
+    height: 72,
+    weight: 203,
+    image_url: "https://i.imgur.com/9XSChWh.png",
+    hometown: "Winnipeg, Manitoba, Canada"
   },
 ])
 
 Wrestler.create([
   { name: "5" },
   { name: "9" },
-  { name: "Adam Page", nickname: "Hangman" },
+  {
+    name: "Adam Page", nickname: "Hangman",
+    image_url: "https://i.imgur.com/IDcdvmi.png"
+  },
   { name: "Alex Reynolds" },
   { name: "Angelico" },
   { name: "Brian Cage" },

@@ -1,6 +1,6 @@
 class SeedHelpers
-  def self.create_tag_team(name, is_official, wrestlers, sub_teams = [])
-    tag_team = TagTeam.create(name: name, is_official: is_official)
+  def self.create_tag_team(params, wrestlers, sub_teams = [])
+    tag_team = TagTeam.create(params)
     wrestlers.each do |wrestler|
       TagTeamMembership.create(tag_team: tag_team, wrestler: Wrestler.find_by(name: wrestler))
     end
