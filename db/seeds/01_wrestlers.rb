@@ -19,7 +19,7 @@ Wrestler.create([
     nickname: "The Cleaner",
     height: 72,
     weight: 203,
-    image_url: "https://i.imgur.com/9XSChWh.png",
+    image_url: "https://i.imgur.com/Jk0PwHb.png",
     hometown: "Winnipeg, Manitoba, Canada"
   },
 ])
@@ -47,7 +47,7 @@ Wrestler.create([
   { name: "Colt Cabana" },
   {
     name: "Darby Allin",
-    image_url: "https://i.imgur.com/5mwPcLu.png"
+    image_url: "https://i.imgur.com/yHCb1NN.png"
   },
   { name: "Dax Harwood" },
   { name: "Dustin Rhodes", nickname: "The Natural" },
@@ -122,7 +122,11 @@ Wrestler.create([
   { name: "Brandi Rhodes", division: :womens},
   { name: "Britt Baker", division: :womens},
   { name: "Emi Sakura", division: :womens},
-  { name: "Hikaru Shida", division: :womens},
+  {
+    name: "Hikaru Shida",
+    division: :womens,
+    image_url: "https://i.imgur.com/kHhs02V.png"
+  },
   { name: "Kris Statlander", division: :womens},
   { name: "Leva Bates", division: :womens},
   { name: "Mel", division: :womens},

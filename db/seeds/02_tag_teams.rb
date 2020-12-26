@@ -10,8 +10,15 @@ SeedHelpers::create_tag_team(
   },
   ["Kenny Omega", "Adam Page"]
 )
-SeedHelpers::create_tag_team({ name: "The Young Bucks", is_official: true }, ["Matt Jackson", "Nick Jackson"])
+SeedHelpers::create_tag_team(
+  {
+    name: "The Young Bucks",
+    is_official: true,
+    image_url: 'https://i.imgur.com/Rjhuzsg.png'
+  },
+  ["Matt Jackson", "Nick Jackson"])
 SeedHelpers::create_tag_team({ name: "Private Party", is_official: true }, ["Isiah Kassidy", "Marq Quen"])
+
 SeedHelpers::create_tag_team(
   {
     name: "SCU (Frankie Kazarian & Scorpio Sky)",
@@ -20,10 +27,12 @@ SeedHelpers::create_tag_team(
   },
   ["Frankie Kazarian", "Scorpio Sky"]
 )
+
 SeedHelpers::create_tag_team({ name: "Lucha Brothers", is_official: true }, ["Pentagon Jr.", "Rey Fenix"])
 SeedHelpers::create_tag_team({ name: "The Butcher & the Blade", is_official: true }, ["The Butcher", "The Blade"])
 SeedHelpers::create_tag_team({ name: "Best Friends", is_official: true }, ["Chuck Taylor", "Trent"])
 SeedHelpers::create_tag_team({ name: "Santana & Ortiz", is_official: true }, ["Santana", "Ortiz"])
+
 SeedHelpers::create_tag_team(
   {
     name: "FTR",

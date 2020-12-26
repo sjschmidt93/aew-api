@@ -6,6 +6,8 @@ class Match < ApplicationRecord
   belongs_to :winning_side, :class_name => "Side"
   belongs_to :championship, optional: true
 
+  default_scope { includes(:event).order('events.date DESC') }
+
   def winner
     winning_side.competitor.name
   end

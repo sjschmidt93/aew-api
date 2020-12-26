@@ -8,7 +8,7 @@ require_relative '../seed_helpers'
 
 events = Event.create([
   {
-    name: "AEW Revolution",
+    name: "Revolution 2020",
     date: "2020-02-28",
     city: "Chicago, IL",
     venue: "Wintrust Arena",
@@ -16,7 +16,7 @@ events = Event.create([
     image_url: "https://wrestlingnews.co/wp-content/uploads/2019/12/AEW-Revolution-scaled-1280x720.png"
   },
   {
-    name: "AEW Double or Nothing",
+    name: "Double or Nothing 2019",
     date: "2019-05-25",
     city: "Las Vegas, NV",
     venue: "MGM Grand Garden Arena",
@@ -24,7 +24,7 @@ events = Event.create([
     image_url: "https://cdn.prowrestlingsheet.com/app/uploads/2020/04/14175137/double-or-nothing.jpg"
   },
   {
-    name: "AEW Full Gear",
+    name: "Full Gear 2019",
     date: "2019-11-09",
     city: "Baltimore, MD",
     venue: "Royal Farms Arena",
@@ -66,8 +66,17 @@ sides = Side.create([
 ])
 Match.create(sides: sides, event: events[3], winning_side: sides[1])
 
-### end dynamite match
+## dynamite 10/30/2019
 
+event = Event.create(
+  name: "AEW Dynamite",
+  date: "2019-10-30",
+  city: "Charleston, WV",
+  venue: "Charleston Coliseum",
+  program: :dynamite
+)
+
+SeedHelpers::create_tag_match("SCU (Frankie Kazarian & Scorpio Sky)", "Lucha Brothers", event, "AEW World Tag Team Championship")
 
 #### dynamite 7/29/20
 
@@ -101,6 +110,7 @@ SeedHelpers::create_tag_match(
   event
 )
 
+
 ### six man tag TODO: make tag teams self-referential
 
 event = Event.create({
@@ -126,4 +136,29 @@ sides = Side.create([
   { competitor: TagTeam.find_by(name: "Darby Allin & Private Party") }
 ])
 Match.create(sides: sides, event: event, winning_side: sides[0])
-###
+
+event = Event.create({
+  name: "All Out 2020",
+  date: "2020-09-05",
+  city: "Jacksonville, FL",
+  venue: "Daily's Place",
+  program: :ppv,
+  image_url: "https://d.newsweek.com/en/full/1631513/aew-all-out-2020-poster-moxley-mjf.jpg"
+})
+
+SeedHelpers::create_tag_match("FTR", "Kenny Omega & Adam Page", event, "AEW World Tag Team Championship")
+
+
+### Full Gear 2020
+
+event = Event.create({
+  name: "Full Gear 2020",
+  date: "2020-11-07",
+  city: "Jacksonville, FL",
+  venue: "Daily's Place",
+  program: :ppv,
+  image_url: "https://media.bleacherreport.com/f_auto,w_800,h_533,q_auto,c_fill/br-img-slides/004/417/775/8f11b66c6abe7470b9baa7f0752c5e32_crop_exact.jpg"
+})
+
+SeedHelpers::create_singles_match("Kenny Omega", "Jon Moxley", event, "AEW World Championship")
+SeedHelpers::create_tag_match("The Young Bucks", "FTR", event, "AEW World Tag Team Championship")
