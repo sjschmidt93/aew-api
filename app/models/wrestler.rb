@@ -10,6 +10,8 @@ class Wrestler < ApplicationRecord
   has_many :sides, as: :competitor
   has_many :matches, through: :sides
 
+  default_scope { order('name') }
+
   enum division: [:mens, :womens]
 
   def current_championships

@@ -28,8 +28,12 @@ Wrestler.create([
   { name: "5" },
   { name: "9" },
   {
-    name: "Adam Page", nickname: "Hangman",
-    image_url: "https://i.imgur.com/IDcdvmi.png"
+    name: "Adam Page",
+    nickname: "Hangman",
+    image_url: "https://i.imgur.com/IDcdvmi.png",
+    height: 72,
+    weight: 228,
+    hometown: "Aaron's Creek, VA"
   },
   { name: "Alex Reynolds" },
   { name: "Angelico" },
@@ -63,14 +67,16 @@ Wrestler.create([
   { name: "Jimmy Havoc" },
   { name: "Joey Janela", nickname: "The Bad Boy" },
   { name: "John Silver" },
-  { name: "Jon Moxley" },
   { name: "Jungle Boy" },
   { name: "Kip Sabian", nickname: "Superbad" },
   { name: "Lance Archer" },
   { name: "Luchasauras" },
   { name: "Luther" },
   { name: "Matt Hardy" },
-  { name: "Matt Jackson" },
+  {
+    name: "Matt Jackson",
+    image_url: "https://i.imgur.com/Ic2pG1T.png"
+  },
   { name: "MJF", nickname: "Maxwell Jacob Friedman" },
   { name: "Marko Stunt" },
   { 
@@ -78,7 +84,10 @@ Wrestler.create([
     image_url: "https://i.imgur.com/uh7Ry5G.png"
   },
   { name: "Michael Nakazawa" },
-  { name: "Nick Jackson" },
+  {
+    name: "Nick Jackson",
+    image_url: "https://i.imgur.com/Cborp4k.png"
+  },
   { name: "Orange Cassidy" },
   {
     name: "Ortiz",
